@@ -1,0 +1,31 @@
+# Maintainer: Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>
+
+_realname=rust-bin
+pkgbase="mingw-w64-${_realname}"
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=1.6.0
+pkgrel=1
+pkgdesc="A safe, concurrent, practical language (official build)"
+arch=('x86_64')
+url="https://github.com/rust-lang/rust"
+license=('MIT, Apache2.0')
+makedepends=()
+depends=()
+source=(
+  "https://static.rust-lang.org/dist/rust-1.6.0-x86_64-pc-windows-gnu.msi"
+)
+md5sums=(SKIP)
+
+build() {
+  cmd /C "msiexec /a rust-${pkgver}-x86_64-pc-windows-gnu.msi targetdir=\"`cygpath -w $(pwd)/work`\" /qn /li install.log"
+}
+
+package() {
+  mkdir -p $pkgdir${MINGW_PREFIX}
+  cp -r $srcdir/work/Rust/bin   $pkgdir${MINGW_PREFIX}/
+  cp -r $srcdir/work/Rust/etc   $pkgdir${MINGW_PREFIX}/
+  cp -r $srcdir/work/Rust/lib   $pkgdir${MINGW_PREFIX}/
+  cp -r $srcdir/work/Rust/share $pkgdir${MINGW_PREFIX}/
+}
+
+# vim: set ft=sh ts=2 sw=2 et :
