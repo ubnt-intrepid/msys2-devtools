@@ -1,0 +1,34 @@
+# Maintainer: Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>
+
+_realname=scipoptsuite
+pkgbase="mingw-w64-${_realname}"
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=3.2.0
+pkgrel=1
+pkgdesc="Toolbox for generating and solving optimization problems."
+arch=('any')
+url="http://scip.zib.de"
+license=('LGPL3', 'custom:ZIB Academic License')
+makedepends=(
+  "${MINGW_PACKAGE_PREFIX}-python2"
+)
+depends=(
+  "${MINGW_PACKAGE_PREFIX}-gcc-libs"
+)
+source=(
+  "http://scip.zib.de/download/release/${pkgname}-${pkgver}.tgz"
+)
+sha256sums=(
+  "69bf32051c0dc4528dff57cacf8701bae0911186bb1f877cce0370bf699e69ae"
+)
+
+build() {
+}
+
+check() {
+}
+
+package() {
+}
+
+# vim: set ft=sh ts=2 sw=2 et :
