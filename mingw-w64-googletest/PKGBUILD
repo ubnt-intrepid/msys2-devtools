@@ -25,6 +25,8 @@ build() {
 
   cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON -DCMAKE_SKIP_RPATH=ON ..
   make
+
+  python2 ../scripts/fuse_gtest_files.py .. ../fused_src
 }
 
 package() {
@@ -35,9 +37,9 @@ package() {
   install -m 0644 include/gtest/*.h "$pkgdir"/${MINGW_PREFIX}/include/gtest
   install -m 0644 include/gtest/internal/*.h "$pkgdir"/${MINGW_PREFIX}/include/gtest/internal/
   install -m 0644 LICENSE "$pkgdir"/${MINGW_PREFIX}/share/licenses/$pkgname/
-  # install -m 0644 "$srcdir/$pkgname-$pkgver/fused-src/gtest"/* "$pkgdir"/usr/src/gtest/src/
-  # install -m 0644 "$srcdir/$pkgname-$pkgver/CMakeLists.txt" "$pkgdir"/usr/src/gtest/
-  # install -m 0644 "$srcdir/$pkgname-$pkgver/cmake"/* "$pkgdir"/usr/src/gtest/cmake/
+  install -m 0644 "$srcdir/$pkgname-$pkgver/fused-src/gtest"/* "$pkgdir"/${MINGW_PREFIX}/src/gtest/src/
+  install -m 0644 "$srcdir/$pkgname-$pkgver/CMakeLists.txt" "$pkgdir"/${MINGW_PREFIX}/src/gtest/
+  install -m 0644 "$srcdir/$pkgname-$pkgver/cmake"/* "$pkgdir"/${MINGW_PREFIX}/src/gtest/cmake/
 }
 
 # vim: set ft=sh ts=2 sw=2 et :
