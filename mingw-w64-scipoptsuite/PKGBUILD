@@ -16,19 +16,36 @@ depends=(
   "${MINGW_PACKAGE_PREFIX}-gcc-libs"
 )
 source=(
-  "http://scip.zib.de/download/release/${pkgname}-${pkgver}.tgz"
+  "http://scip.zib.de/download/release/${_realname}-${pkgver}.tgz"
 )
 sha256sums=(
   "69bf32051c0dc4528dff57cacf8701bae0911186bb1f877cce0370bf699e69ae"
 )
 
+prepare() {
+  cd ${_realname}-${pkgver}
+  for f in *.tgz; do
+    tar xf $f
+  done
+
+  cp scip-3.2.0/make/make.mingw.x86{,_64}.gnu.opt
+  cp soplex-2.2.0/make/make.mingw.x86{,_64}.gnu.opt
+  cp zimpl-3.3.3/make/make.mingw.x86{,_64}.gnu.opt
+}
+
 build() {
+  cd ${_realname}-${pkgver}
+  make SHARED=true READLINE=false scipoptlib
+  make READLINE=false
 }
 
 check() {
+  cd ${_realname}-${pkgver}
+  make test
 }
 
 package() {
+  ls
 }
 
 # vim: set ft=sh ts=2 sw=2 et :
