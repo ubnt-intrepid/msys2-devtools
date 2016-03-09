@@ -1,0 +1,45 @@
+# Maintainer: Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>
+
+_realname=mruby
+pkgbase=mingw-w64-${_realname}
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Lightweight Ruby (mingw-w64)"
+arch=('any')
+url="https://github.com/mruby/mruby"
+license=('MIT')
+depends=("${MINGW_PACKAGE_PREFIX}-readline")
+makedepends=("${MINGW_PACKAGE_PREFIX}-ruby")
+source=("https://github.com/mruby/mruby/archive/${pkgver}.tar.gz")
+sha256sums=(SKIP)
+
+prepare() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+  # patch -p1 -i "${srcdir}/0010-fix-shebang.patch"
+}
+
+build() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+
+  CFLAGS="$CFLAGS -std=c11" make
+}
+
+check() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+
+  make test
+}
+
+package() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+
+  install -d "${pkgdir}${MINGW_PREFIX}"/{bin,lib,share/licenses/mruby}
+
+  cp build/host/bin/* "${pkgdir}${MINGW_PREFIX}/bin"
+  cp build/host/lib/*.a "${pkgdir}${MINGW_PREFIX}/lib"
+  cp -r include "${pkgdir}${MINGW_PREFIX}"
+  cp MITL "${pkgdir}${MINGW_PREFIX}/share/licenses/mruby/LICENSE"
+}
+
+# vim: set ft=sh ts=2 sw=2 et :
