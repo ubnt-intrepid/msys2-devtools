@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="static analysis of C/C++ code (mingw-w64)"
 arch=('any')
 url="https://github.com/danmar/cppcheck"
-license=('LICENSE')
+license=('GPL')
 depends=("${MINGW_PACKAGE_PREFIX}-qt5"
          "${MINGW_PACKAGE_PREFIX}-python3"
          "${MINGW_PACKAGE_PREFIX}-python3-pygments")
@@ -61,6 +61,12 @@ package() {
     SRCDIR=build \
     CFGDIR=${MINGW_PREFIX}/share/cppcheck/cfg \
     HAVE_RULES=yes
+
+    # GUI
+    install -m755 build/gui/cppcheck-gui.exe "${pkgdir}${MINGW_PREFIX}/bin"
+    install -d "${pkgdir}${MINGW_PREFIX}/share/cppcheck/cfg/lang"
+    install -D cfg/* -t "${pkgdir}${MINGW_PREFIX}/share/cppcheck/cfg"
+    install -D gui/*.qm -t "${pkgdir}${MINGW_PREFIX}/share/cppcheck/cfg/lang"
 }
 
 # vim: set ft=sh ts=2 sw=2 et :
