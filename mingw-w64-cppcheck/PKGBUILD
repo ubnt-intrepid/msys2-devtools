@@ -1,4 +1,4 @@
-# Maintainer: Some One <some.one@some.email.com>
+# Maintainer: Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>
 
 _realname=cppcheck
 pkgbase=mingw-w64-${_realname}
@@ -15,7 +15,7 @@ depends=("${MINGW_PACKAGE_PREFIX}-qt5"
 makedepends=("${MINGW_PACKAGE_PREFIX}-docbook-xsl")
 source=("https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz"
         '0010-fix-shebang.patch')
-sha256sums=('SKIP'
+sha256sums=('c718949e1ec22a8a0dca7e2953a55c502ef65e53ff9922fb91759388618faa7f'
             'SKIP')
 
 prepare() {
