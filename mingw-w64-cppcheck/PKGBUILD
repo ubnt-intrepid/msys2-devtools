@@ -9,26 +9,58 @@ pkgdesc="static analysis of C/C++ code (mingw-w64)"
 arch=('any')
 url="https://github.com/danmar/cppcheck"
 license=('LICENSE')
-makedepends=("${MINGW_PACKAGE_PREFIX}-cmake")
-source=("https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+depends=("${MINGW_PACKAGE_PREFIX}-qt5"
+         "${MINGW_PACKAGE_PREFIX}-python3"
+         "${MINGW_PACKAGE_PREFIX}-python3-pygments")
+makedepends=("${MINGW_PACKAGE_PREFIX}-docbook-xsl")
+source=("https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz"
+        '0010-fix-shebang.patch')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+  patch -p1 -i "${srcdir}/0010-fix-shebang.patch"
+}
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
 
-  rm -rf build
-  mkdir build
-  cd build
+  LANG='en_US.UTF-8' make \
+    SRCDIR=build \
+    CFGDIR=${MINGW_PREFIX}/share/cppcheck/cfg \
+    HAVE_RULES=yes
 
-  cmake \
-    -G'MSYS Makefiles' \
-    -DCMAKE_INSTALL_PREFIX=${MINGW_PREFIX} \
-    ..
+  make man \
+    DB2MAN=${MINGW_PREFIX}/share/xml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl \
+    CFGDIR=${MINGW_PREFIX}/share/cppcheck/cfg
 
-  make
+  cd gui
+  lrelease gui.pro
+  qmake HAVE_RULES=yes
+  make \
+    SRCDIR=build \
+    CFGDIR=${MINGW_PREFIX}/share/cppcheck/cfg \
+    HAVE_RULES=yes
+}
+
+check() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+
+  LANG='en_US.UTF-8' make test \
+    SRCDIR=build \
+    CFGDIR=${MINGW_PREFIX}/share/cppcheck/cfg \
+    HAVE_RULES=yes
 }
 
 package() {
   cd "${srcdir}/${_realname}-${pkgver}"
-  make DESTDIR=${pkgdir} install
+  LANG='en_US.UTF-8' make install \
+    DESTDIR="${pkgdir}" \
+    PREFIX="${MINGW_PREFIX}" \
+    SRCDIR=build \
+    CFGDIR=${MINGW_PREFIX}/share/cppcheck/cfg \
+    HAVE_RULES=yes
 }
+
+# vim: set ft=sh ts=2 sw=2 et :
