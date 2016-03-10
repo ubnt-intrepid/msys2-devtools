@@ -14,13 +14,16 @@ depends=("${MINGW_PACKAGE_PREFIX}-qt5"
          "${MINGW_PACKAGE_PREFIX}-python3-pygments")
 makedepends=("${MINGW_PACKAGE_PREFIX}-docbook-xsl")
 source=("https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz"
-        '0010-fix-shebang.patch')
+        '0010-fix-shebang.patch'
+        '0020-change-language-files-path.patch')
 sha256sums=('c718949e1ec22a8a0dca7e2953a55c502ef65e53ff9922fb91759388618faa7f'
+            'SKIP'
             'SKIP')
 
 prepare() {
   cd "${srcdir}/${_realname}-${pkgver}"
   patch -p1 -i "${srcdir}/0010-fix-shebang.patch"
+  patch -p1 -i "${srcdir}/0020-change-language-files-path.patch"
 }
 
 build() {
