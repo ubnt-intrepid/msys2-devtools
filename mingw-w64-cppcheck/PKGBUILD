@@ -7,7 +7,7 @@ pkgver=1.72
 pkgrel=1
 pkgdesc="static analysis of C/C++ code (mingw-w64)"
 arch=('any')
-url="https://github.com/danmar/cppcheck"
+url="http://cppcheck.sourceforge.net/"
 license=('GPL')
 depends=("${MINGW_PACKAGE_PREFIX}-qt5"
          "${MINGW_PACKAGE_PREFIX}-python3"
@@ -17,8 +17,8 @@ source=("https://github.com/danmar/cppcheck/archive/${pkgver}.tar.gz"
         '0010-fix-shebang.patch'
         '0020-change-language-files-path.patch')
 sha256sums=('c718949e1ec22a8a0dca7e2953a55c502ef65e53ff9922fb91759388618faa7f'
-            'SKIP'
-            'SKIP')
+            'b7d4056522b42b5e99ba990e1e2af4dfca857701aa7c110a59766ff47230b717'
+            'a15a73396a2fa346d29df52c3143b46618454d0bc0f12f0ad891d5a4a856cb56')
 
 prepare() {
   cd "${srcdir}/${_realname}-${pkgver}"
