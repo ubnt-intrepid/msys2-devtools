@@ -9,12 +9,18 @@ pkgdesc="Small, safe and fast formatting library for C++"
 arch=('any')
 url="https://cppformat.github.io"
 license=('BSD')
-makedepends=("${MINGW_PACKAGE_PREFIX}-cmake")
+makedepends=("${MINGW_PACKAGE_PREFIX}-cmake"
+             "${MINGW_PACKAGE_PREFIX}-python3"
+             "${MINGW_PACKAGE_PREFIX}-python3-sphinx")
 depends=()
 source=(
   "https://github.com/cppformat/${_realname}/archive/${pkgver}.tar.gz"
 )
 md5sums=(SKIP)
+
+prepare() {
+  cd "${_realname}-${pkgver}"
+}
 
 build() {
   cd "${_realname}-${pkgver}"
@@ -23,23 +29,29 @@ build() {
   mkdir build
   cd build
 
-  cmake -G "MSYS Makefiles" \
-    -DCMAKE_INSTALL_PREFIX="${MINGW_PREFIX}" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=1 \
-    -DFMT_TEST=0 \
-    -Wno-dev \
-    ..
+  MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
+    ${MINGW_PREFIX}/bin/cmake \
+      -G "Unix Makefiles" \
+      -DCMAKE_INSTALL_PREFIX="${MINGW_PREFIX}" \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DBUILD_SHARED_LIBS=1 \
+      -DFMT_TEST=0 \
+      -Wno-dev \
+      ..
+
   make
+  make doc
 }
 
 check() {
   cd "${_realname}-${pkgver}/build"
 
-  cmake -G "MSYS Makefiles" \
-    -DFMT_TEST=1 \
-    -Wno-dev \
-    ..
+  MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
+    cmake -G "Unix Makefiles" \
+      -DFMT_TEST=1 \
+      -Wno-dev \
+      ..
+
   make
   make test
 }
@@ -48,8 +60,7 @@ package() {
   cd "${_realname}-${pkgver}"
   cd build
 
-  make CMAKE_INSTALL_PREFIX="${MINGW_PREFIX}" DESTDIR="${pkgdir}" install
-  rm -rf ${pkgdir}/${MINGW_PREFIX}/share/doc/${_realname}/{.buildinfo,.doctrees,_sources}
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim: set ft=sh ts=2 sw=2 et :
