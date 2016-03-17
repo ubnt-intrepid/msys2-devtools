@@ -7,13 +7,23 @@ pkgdesc="X11 client-side library (mingw-w64)"
 arch=(any)
 license=('custom')
 url='http://xorg.freedesktop.org/'
-source=("http://xorg.freedesktop.org/releases/individual/lib/libX11-${pkgver}.tar.bz2")
-sha256sums=('cf31a7c39f2f52e8ebd0db95640384e63451f9b014eed2bb7f5de03e8adc8111')
+source=("http://xorg.freedesktop.org/releases/individual/lib/libX11-${pkgver}.tar.bz2"
+        0010-Ximpatch.patch)
+sha256sums=('cf31a7c39f2f52e8ebd0db95640384e63451f9b014eed2bb7f5de03e8adc8111'
+            SKIP)
+
+prepare() {
+  cd "${srcdir}/libX11-${pkgver}"
+
+  patch -Np1 -i ../0010-Ximpatch.patch
+}
 
 build() {
   cd "${srcdir}/libX11-${pkgver}"
   ./configure \
-    --prefix=${MINGW_PREFIX}
+    --prefix=${MINGW_PREFIX} \
+    --disable-static \
+    --disable-xf86bigfont
   make
 }
 

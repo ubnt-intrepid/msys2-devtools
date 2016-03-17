@@ -7,14 +7,27 @@ pkgdesc="X11 client-side library (mingw-w64)"
 arch=(any)
 license=('custom')
 url='http://xorg.freedesktop.org/'
-source=("http://xcb.freedesktop.org/dist/${_realname}-${pkgver}.tar.bz2")
-sha256sums=('b720fd6c7d200e5371affdb3f049cc8f88cff9aed942ff1b824d95eedbf69d30')
+source=("http://xcb.freedesktop.org/dist/${_realname}-${pkgver}.tar.bz2"
+        0010-no-pthread-stubs.patch
+        0020-winsock.patch)
+sha256sums=('b720fd6c7d200e5371affdb3f049cc8f88cff9aed942ff1b824d95eedbf69d30'
+            SKIP
+            SKIP)
+
+prepare() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+  patch -Np1 -i ../0010-no-pthread-stubs.patch
+  patch -Np1 -i ../0020-winsock.patch
+  autoreconf -vfi
+}
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
   ./configure \
     --prefix=${MINGW_PREFIX} \
-    --enable-xkb
+    --enable-xkb \
+    --enable-xinput \
+    --disable-static
   make
 }
 
