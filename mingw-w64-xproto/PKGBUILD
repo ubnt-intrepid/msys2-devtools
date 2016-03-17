@@ -1,0 +1,26 @@
+_realname=xproto
+pkgbase="mingw-w64-${_realname}"
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=7.0.28
+pkgrel=1
+pkgdesc="X11 core wire protocol and auxiliary headers (mingw-w64)"
+arch=(any)
+license=('custom')
+url='http://xorg.freedesktop.org/'
+source=("http://xorg.freedesktop.org/releases/individual/proto/xproto-${pkgver}.tar.bz2")
+sha256sums=('29e85568d1f68ceef8a2c081dad9bc0e5500a53cfffde24b564dc43d46ddf6ca')
+depends=("${MINGW_PACKAGE_PREFIX}-xorg-util-macros")
+
+build() {
+  cd "${srcdir}/xproto-${pkgver}"
+  ./configure \
+    --prefix=${MINGW_PREFIX}
+  make
+}
+
+package() {
+  cd "${srcdir}/xproto-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim: set ft=sh ts=2 sw=2 et :

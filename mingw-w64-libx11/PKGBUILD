@@ -1,0 +1,30 @@
+_realname=libx11
+pkgbase="mingw-w64-${_realname}"
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=1.6.3
+pkgrel=1
+pkgdesc="X11 client-side library (mingw-w64)"
+arch=(any)
+license=('custom')
+url='http://xorg.freedesktop.org/'
+source=("http://xorg.freedesktop.org/releases/individual/lib/libX11-${pkgver}.tar.bz2")
+sha256sums=('cf31a7c39f2f52e8ebd0db95640384e63451f9b014eed2bb7f5de03e8adc8111')
+
+build() {
+  cd "${srcdir}/libX11-${pkgver}"
+  ./configure \
+    --prefix=${MINGW_PREFIX}
+  make
+}
+
+check() {
+  cd "${srcdir}/libX11-${pkgver}"
+  make check
+}
+
+package() {
+  cd "${srcdir}/libX11-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim: set ft=sh ts=2 sw=2 et :

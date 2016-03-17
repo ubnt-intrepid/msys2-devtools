@@ -1,0 +1,30 @@
+_realname=xorg-util-macros
+pkgbase="mingw-w64-${_realname}"
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=1.19.0
+pkgrel=1
+pkgdesc="X.Org Autotools Macros (mingw-w64)"
+arch=(any)
+license=('custom')
+url='http://xorg.freedesktop.org/'
+source=("http://xorg.freedesktop.org/releases/individual/util/util-macros-${pkgver}.tar.bz2")
+sha256sums=('2835b11829ee634e19fa56517b4cfc52ef39acea0cd82e15f68096e27cbed0ba')
+
+build() {
+  cd util-macros-${pkgver}
+  ./configure \
+    --prefix=${MINGW_PREFIX}
+  make
+}
+
+package() {
+  cd util-macros-${pkgver}
+  make DESTDIR="${pkgdir}" install
+
+  install -m755 -d "${pkgdir}${MINGW_PREFIX}/lib"
+  mv "${pkgdir}${MINGW_PREFIX}/share/pkgconfig" "${pkgdir}${MINGW_PREFIX}/lib/"
+  install -m755 -d "${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}"
+  install -m644 COPYING "${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/"
+}
+
+# vim: set ft=sh ts=2 sw=2 et :

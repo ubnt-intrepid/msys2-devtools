@@ -1,0 +1,27 @@
+_realname=xextproto
+pkgbase="mingw-w64-${_realname}"
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=7.3.0
+pkgrel=1
+pkgdesc="X11 various extension wire protocol (mingw-w64)"
+arch=(any)
+license=('custom')
+url='http://xorg.freedesktop.org/'
+source=("http://xorg.freedesktop.org/releases/individual/proto/xextproto-${pkgver}.tar.bz2")
+sha256sums=('f3f4b23ac8db9c3a9e0d8edb591713f3d70ef9c3b175970dd8823dfc92aa5bb0')
+makedepends=("${MINGW_PACKAGE_PREFIX}-xorg-util-macros"
+             "${MINGW_PACKAGE_PREFIX}-docbook-xsl")
+
+build() {
+  cd "${srcdir}/xextproto-${pkgver}"
+  ./configure \
+    --prefix=${MINGW_PREFIX}
+  make
+}
+
+package() {
+  cd "${srcdir}/xextproto-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim: set ft=sh ts=2 sw=2 et :

@@ -1,0 +1,27 @@
+_realname=inputproto
+pkgbase="mingw-w64-${_realname}"
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=2.3.1
+pkgrel=1
+pkgdesc="X11 Input extension wire protocol (mingw-w64)"
+arch=(any)
+license=('custom')
+url='http://xorg.freedesktop.org/'
+source=("http://xorg.freedesktop.org/releases/individual/proto/${_realname}-${pkgver}.tar.bz2")
+sha256sums=('5a47ee62053a6acef3a83f506312494be1461068d0b9269d818839703b95c1d1')
+makedepends=("${MINGW_PACKAGE_PREFIX}-xorg-util-macros"
+            'asciidoc')
+
+build() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+  ./configure \
+    --prefix=${MINGW_PREFIX}
+  make
+}
+
+package() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim: set ft=sh ts=2 sw=2 et :
