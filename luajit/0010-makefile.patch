@@ -1,0 +1,26 @@
+--- a/src/Makefile	2016-05-09 17:10:42.994741900 +0900
++++ b/src/Makefile	2016-05-09 17:11:39.615192800 +0900
+@@ -166,6 +166,10 @@ else
+     HOST_SYS= Windows
+     HOST_MSYS= cygwin
+   endif
++	ifneq (,$(findstring MSYS,$(HOST_SYS)))
++		HOST_SYS= Windows
++		HOST_MSYS= msys
++	endif
+   # Use Clang for OSX host.
+   ifeq (Darwin,$(HOST_SYS))
+     DEFAULT_CC= clang
+@@ -524,7 +528,11 @@ ifeq (Windows,$(TARGET_SYS))
+   ifeq (cygwin,$(HOST_MSYS))
+     LUAJIT_SO= cyg$(TARGET_DLLNAME)
+   else
+-    LUAJIT_SO= $(TARGET_DLLNAME)
++		ifeq (msys, $(HOST_MSYS))
++			LUAJIT_SO= msys-$(TARGET_DLLNAME)
++		else
++			LUAJIT_SO= $(TARGET_DLLNAME)
++		endif
+   endif
+   # Mixed mode is not supported on Windows. And static mode doesn't work well.
+   # C modules cannot be loaded, because they bind to lua51.dll.
