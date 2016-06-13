@@ -1,0 +1,41 @@
+# Maintainer: Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>
+
+_realname=gurobi
+pkgbase="mingw-w64-${_realname}"
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=6.5.1
+pkgrel=1
+pkgdesc="MinGW-w64 library for Gurobi (be careful to use)"
+arch=('any')
+url=""
+license=('custom')
+makedepends=(
+  "${MINGW_PACKAGE_PREFIX}-tools-git"
+)
+depends=(
+  "${MINGW_PACKAGE_PREFIX}-gcc-libs"
+)
+source=()
+sha256sums=()
+
+prepare() {
+  if [[ ! -d $(cygpath $GUROBI_HOME) ]]; then
+    echo "\$GUROBI_HOME is not set."
+    return 1
+  fi
+}
+
+build() {
+  cd $srcdir
+  gendef $(cygpath $GUROBI_HOME)/bin/gurobi65.dll
+  dlltool --dllname gurobi65.dll --def gurobi65.def --output-lib libgurobi65.dll.a
+}
+
+package() {
+  mkdir -p ${pkgdir}${MINGW_PREFIX}/{include,lib}
+
+  cp $(cygpath $GUROBI_HOME)/include/gurobi_c.h "${pkgdir}${MINGW_PREFIX}"/include/
+  cp $srcdir/libgurobi65.dll.a "${pkgdir}${MINGW_PREFIX}"/lib/
+}
+
+# vim: set ft=sh ts=2 sw=2 et :
