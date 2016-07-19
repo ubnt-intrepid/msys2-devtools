@@ -4,3 +4,5 @@ src/
 *.tar.bz2
 *.pkg.tar.xz
 *.tgz
+*.zip
+*.asc

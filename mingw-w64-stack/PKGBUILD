@@ -1,0 +1,30 @@
+# Maintainer: Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>
+
+_realname=stack
+pkgbase="mingw-w64-${_realname}"
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=1.1.2
+pkgrel=1
+pkgdesc="The Haskell Tool Stack (from distributed binary) (mingw-w64)"
+arch=('any')
+url="https://github.com/commercialhaskell/stack"
+license=('BSD')
+makedepends=()
+depends=()
+source=("https://github.com/commercialhaskell/${_realname}/releases/download/v${pkgver}/${_realname}-${pkgver}-windows-${CARCH}.zip")
+sha256sums=(SKIP)
+
+package() {
+  cd "${srcdir}"
+  mkdir -p ${pkgdir}${MINGW_PREFIX}/{bin,etc/profile.d,share/doc,share/licenses/stack}
+  
+  cp ./stack.exe ${pkgdir}${MINGW_PREFIX}/bin/
+  cp -r ./doc ${pkgdir}${MINGW_PREFIX}/share/doc/stack
+  cp ./LICENSE ${pkgdir}${MINGW_PREFIX}/share/licenses/stack/
+
+  for ext in sh zsh; do
+    echo 'export STACK_ROOT=$HOME/.stack' > ${pkgdir}${MINGW_PREFIX}/etc/profile.d/stack.$ext
+  done
+}
+
+# vim: set ft=sh ts=2 sw=2 et :
