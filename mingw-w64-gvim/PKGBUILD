@@ -1,0 +1,81 @@
+
+_realname=gvim
+pkgbase=mingw-w64-${_realname}
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=7.4.2067
+pkgrel=1
+pkgdesc="Vi Improbed, a highly configurable, improved version of the vi editor with GUI (mingw-w64)"
+arch=('any')
+url="http://www.vim.org"
+license=('custom:vim')
+depends=("${MINGW_PACKAGE_PREFIX}-gcc-libs")
+makedepends=("${MINGW_PACKAGE_PREFIX}-lua"
+             "${MINGW_PACKAGE_PREFIX}-python2"
+             "${MINGW_PACKAGE_PREFIX}-python3"
+             "${MINGW_PACKAGE_PREFIX}-ruby"
+             "${MINGW_PACKAGE_PREFIX}-tcl")
+optdepends=("${MINGW_PACKAGE_PREFIX}-lua: Lua language support"
+             "${MINGW_PACKAGE_PREFIX}-python2: Python2 language support"
+             "${MINGW_PACKAGE_PREFIX}-python3: Python3 language support"
+             "${MINGW_PACKAGE_PREFIX}-ruby: ruby language support"
+             "${MINGW_PACKAGE_PREFIX}-tcl: Tcl language support")
+source=("${_realname}"::"git+https://github.com/vim/vim.git#tag=v$pkgver"
+        "kaoriya-patch"::"git+https://github.com/koron/vim-kaoriya-patches.git#branch=master"
+        0010-change-runtimepath.patch)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+  cd $srcdir/${_realname}
+  
+  patch -p1 -i $srcdir/0010-change-runtimepath.patch
+
+  # TODO apply patches
+  # for patchfile in `cat "$srcdir"/kaoriya-patch/master/series | grep -v '+experiments' | grep -v '+debug' | grep -v '+lambda' | awk '{print $1}'`; do
+  #   echo "$patchfile"
+  #   git apply ${srcdir}/kaoriya-patch/master/$patchfile
+  # done
+}
+
+build() {
+  cd $srcdir/${_realname}/src
+
+  # TODO avoid hard coding
+  make -f Make_ming.mak \
+    DIRECTX=yes \
+    DYNAMIC_PERL=no \
+    ARCH=x86-64 \
+    LUA=${MINGW_PREFIX} LUA_VER=53 \
+    PYTHON=${MINGW_PREFIX} PYTHON_VER=27 DYNAMIC_PYTHON_DLL=libpython2.7.dll PYTHONINC="-I ${MINGW_PREFIX}/include/python2.7" \
+    PYTHON3=${MINGW_PREFIX} PYTHON3_VER=35 DYNAMIC_PYTHON3_DLL=libpython3.5m.dll PYTHON3INC="-I ${MINGW_PREFIX}/include/python3.5m" \
+    RUBY=${MINGW_PREFIX} RUBY_VER=23 RUBYINC="-I /mingw64/include/ruby-2.3.0" \
+    TCL=${MINGW_PREFIX} TCL_VER=86 
+
+  pushd xxd
+  make -f Make_ming.mak
+  popd > /dev/null
+
+  pushd po
+  make -f Make_cyg.mak VIMRUNTIME=../../runtime install
+  popd > /dev/null
+}
+
+package() {
+  cd "${srcdir}/${_realname}"
+  
+  mkdir -p "${pkgdir}${MINGW_PREFIX}/"{bin,etc/profile.d,/share/vim,share/licenses/vim}
+
+  # executable binaries 
+  cp src/{gvim.exe,vimrun.exe,xxd/xxd.exe} "${pkgdir}${MINGW_PREFIX}"/bin/
+
+  # runtime and license file
+  cp -r runtime "${pkgdir}${MINGW_PREFIX}"/share/vim/vim74
+  cp "${pkgdir}${MINGW_PREFIX}"/share/{vim/vim74/doc/uganda.txt,licenses/vim/license.txt}
+
+  # profile script
+  for ext in sh zsh; do
+    echo "export VIMRUNTIME=${MINGW_PREFIX}/share/vim/vim74" > "${pkgdir}${MINGW_PREFIX}"/etc/profile.d/gvim.$ext
+  done
+}
+
