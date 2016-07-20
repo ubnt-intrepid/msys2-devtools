@@ -1,22 +1,19 @@
 # Maintainer: Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>
 
-_realname=cppformat
+_realname=fmt
 pkgbase="mingw-w64-${_realname}"
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Small, safe and fast formatting library for C++"
+pkgdesc="Small, safe and fast formatting library"
 arch=('any')
-url="https://cppformat.github.io"
+url="http://fmtlib.net/"
 license=('BSD')
 makedepends=("${MINGW_PACKAGE_PREFIX}-cmake"
              "${MINGW_PACKAGE_PREFIX}-python3"
              "${MINGW_PACKAGE_PREFIX}-python3-sphinx")
-depends=()
-source=(
-  "https://github.com/cppformat/${_realname}/archive/${pkgver}.tar.gz"
-)
-md5sums=(SKIP)
+source=("https://github.com/fmtlib/${_realname}/archive/${pkgver}.tar.gz")
+sha256sums=(f075db25588166d028bd26b931a89b96f2a29f039dfe7c310d235797221c96a1)
 
 prepare() {
   cd "${_realname}-${pkgver}"
