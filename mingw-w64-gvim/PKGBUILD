@@ -10,11 +10,13 @@ url="http://www.vim.org"
 license=('custom:vim')
 depends=("${MINGW_PACKAGE_PREFIX}-gcc-libs")
 makedepends=("${MINGW_PACKAGE_PREFIX}-luajit-git"
+             "${MINGW_PACKAGE_PREFIX}-perl"
              "${MINGW_PACKAGE_PREFIX}-python2"
              "${MINGW_PACKAGE_PREFIX}-python3"
              "${MINGW_PACKAGE_PREFIX}-ruby"
              "${MINGW_PACKAGE_PREFIX}-tcl")
 optdepends=("${MINGW_PACKAGE_PREFIX}-luajit-git: Lua language support"
+             "${MINGW_PACKAGE_PREFIX}-perl: Perl language support"
              "${MINGW_PACKAGE_PREFIX}-python2: Python2 language support"
              "${MINGW_PACKAGE_PREFIX}-python3: Python3 language support"
              "${MINGW_PACKAGE_PREFIX}-ruby: ruby language support"
@@ -22,17 +24,20 @@ optdepends=("${MINGW_PACKAGE_PREFIX}-luajit-git: Lua language support"
 source=("${_realname}"::"git+https://github.com/vim/vim.git#tag=v$pkgver"
         "kaoriya-patch"::"git+https://github.com/koron/vim-kaoriya-patches.git#branch=master"
         0010-change-runtimepath.patch
-        0020-fix-luadir.patch)
+        0020-fix-luadir.patch
+        0030-add-perl-lib.patch)
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP')
+            'e528868709ede398835d24d46d3eed940e5aaa741134770a110d5ed245f8df30'
+            'a0991aa44cd7d2b7671ea0ee5cb3f818469b6bc6bfe03fa9efd554e5a76c644a'
+            '8299205bb54c4bb5355c10921a78b045df4d91889cf3d207f311e605aa384d09')
 
 prepare() {
   cd $srcdir/${_realname}
   
   patch -p1 -i $srcdir/0010-change-runtimepath.patch
   patch -p1 -i $srcdir/0020-fix-luadir.patch
+  patch -p1 -i $srcdir/0030-add-perl-lib.patch
 
   # TODO apply patches
   # for patchfile in `cat "$srcdir"/kaoriya-patch/master/series | grep -v '+experiments' | grep -v '+debug' | grep -v '+lambda' | awk '{print $1}'`; do
@@ -46,13 +51,34 @@ build() {
 
   # TODO avoid hard coding
   make -f Make_ming.mak \
-    DIRECTX=yes \
-    DYNAMIC_PERL=no \
     ARCH=x86-64 \
-    LUA=${MINGW_PREFIX} LUA_VER=51 LUA_INCDIR=${MINGW_PREFIX}/include/luajit-2.0 LUA_LIBDIR=${MINGW_PREFIX}/lib/lua/5.1 \
-    PYTHON=${MINGW_PREFIX} PYTHON_VER=27 DYNAMIC_PYTHON_DLL=libpython2.7.dll PYTHONINC="-I ${MINGW_PREFIX}/include/python2.7" \
-    PYTHON3=${MINGW_PREFIX} PYTHON3_VER=35 DYNAMIC_PYTHON3_DLL=libpython3.5m.dll PYTHON3INC="-I ${MINGW_PREFIX}/include/python3.5m" \
-    RUBY=${MINGW_PREFIX} RUBY_VER=23 DYNAMIC_RUBY_DLL=x64-msvcrt-ruby230.dll RUBYINC="-I /mingw64/include/ruby-2.3.0" \
+    DIRECTX=yes \
+    GUI=yes \
+    IME=yes \
+    MBYTE=yes \
+    ICONV=yes \
+    DEBUG=no \
+    CSCOPE=yes \
+    LUA=${MINGW_PREFIX} \
+      LUA_VER=51 \
+      LUA_INCDIR=${MINGW_PREFIX}/include/luajit-2.0 \
+      LUA_LIBDIR=${MINGW_PREFIX}/lib/lua/5.1 \
+    PERL=${MINGW_PREFIX} \
+      DYNAMIC_PERL=yes \
+      PERL_VER=522 \
+      PERLEXE=${MINGW_PREFIX}/bin/perl.exe \
+      PERLLIB=${MINGW_PREFIX}/lib/perl5/core_perl \
+    PYTHON=${MINGW_PREFIX} PYTHON_VER=27 \
+      DYNAMIC_PYTHON_DLL=libpython2.7.dll \
+      PYTHONINC="-I ${MINGW_PREFIX}/include/python2.7" \
+    PYTHON3=${MINGW_PREFIX} \
+      PYTHON3_VER=35 \
+      DYNAMIC_PYTHON3_DLL=libpython3.5m.dll \
+      PYTHON3INC="-I ${MINGW_PREFIX}/include/python3.5m" \
+    RUBY=${MINGW_PREFIX} \
+      RUBY_VER=23 \
+      DYNAMIC_RUBY_DLL=x64-msvcrt-ruby230.dll \
+      RUBYINC="-I /mingw64/include/ruby-2.3.0" \
     TCL=${MINGW_PREFIX} TCL_VER=86 
 
   pushd xxd
