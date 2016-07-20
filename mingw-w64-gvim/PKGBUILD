@@ -68,7 +68,8 @@ build() {
       PERL_VER=522 \
       PERLEXE=${MINGW_PREFIX}/bin/perl.exe \
       PERLLIB=${MINGW_PREFIX}/lib/perl5/core_perl \
-    PYTHON=${MINGW_PREFIX} PYTHON_VER=27 \
+    PYTHON=${MINGW_PREFIX} \
+      PYTHON_VER=27 \
       DYNAMIC_PYTHON_DLL=libpython2.7.dll \
       PYTHONINC="-I ${MINGW_PREFIX}/include/python2.7" \
     PYTHON3=${MINGW_PREFIX} \
@@ -77,7 +78,7 @@ build() {
       PYTHON3INC="-I ${MINGW_PREFIX}/include/python3.5m" \
     RUBY=${MINGW_PREFIX} \
       RUBY_VER=23 \
-      DYNAMIC_RUBY_DLL=x64-msvcrt-ruby230.dll \
+      RUBY_VER_LONG=2.3.0 \
       RUBYINC="-I /mingw64/include/ruby-2.3.0" \
     TCL=${MINGW_PREFIX} TCL_VER=86 
 
