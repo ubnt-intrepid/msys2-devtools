@@ -21,13 +21,12 @@ sha256sums=(SKIP)
 build() {
   cd "${srcdir}/${_realname}"
  
-  export AR=ar
   export MSYS=winsymlinks:nativestrict
 
   ./configure --prefix=${MINGW_PREFIX}
   
-  make lib-ext
-  make
+  make -j1 AR=ar lib-ext
+  make -j1 AR=ar
 }
 
 package() {

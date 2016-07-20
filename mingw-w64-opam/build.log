@@ -1,0 +1,2070 @@
+==> Making package: mingw-w64-opam 1.3-1 (Wed, Jul 20, 2016  5:46:18 AM)
+==> Checking runtime dependencies...
+==> Checking buildtime dependencies...
+==> Retrieving sources...
+  -> Updating opam git repo...
+Fetching origin
+==> Validating source files with sha256sums...
+    opam ... Skipped
+==> Extracting sources...
+  -> Creating working copy of opam git repo...
+Cloning into 'opam'...
+done.
+Switched to a new branch 'makepkg'
+==> Removing existing $pkgdir/ directory...
+==> Starting build()...
+configure: loading site script /mingw64/etc/config.site
+checking for ocamlc... ocamlc
+OCaml version is 4.02.3
+OCaml library path is C:\Users\y_sasaki\AppData\Local\msys64\mingw64\lib\ocaml
+checking for ocamlopt... ocamlopt
+checking for ocamlc.opt... ocamlc.opt
+checking for ocamlopt.opt... ocamlopt.opt
+checking for ocaml... ocaml
+checking for ocamldep... ocamldep
+checking for ocamldep.opt... ocamldep.opt
+checking for ocamlmktop... ocamlmktop
+checking for ocamlmklib... ocamlmklib
+checking for ocamldoc... ocamldoc
+checking for ocamldoc.opt... ocamldoc.opt
+checking for ocamlbuild... ocamlbuild
+checking for gawk... gawk
+checking for compiler type... cc
+checking for compiler os_type... Win32
+checking for compiler architecture... amd64
+checking for gcc... gcc -O -mms-bitfields -Wall
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.exe
+checking for suffix of executables... .exe
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc -O -mms-bitfields -Wall accepts -g... yes
+checking for gcc -O -mms-bitfields -Wall option to accept ISO C89... none needed
+checking for cygpath... cygpath
+checking for invocation options for ocamldep.opt... -slash
+checking for i686-w64-mingw32-gcc... no
+configure: WARNING: Complementary C compiler not found - opam-putenv will not be built
+checking for x86_64-w64-mingw32-ar... x86_64-w64-mingw32-ar
+checking for ocamllex... ocamllex
+checking for ocamllex.opt... ocamllex.opt
+checking for ocamlyacc... ocamlyacc
+checking for ocamlfind... no
+checking for curl... curl
+
+checking for OCaml findlib package unix... not found
+checking for OCaml findlib package extlib... not found
+checking for OCaml findlib package re... not found
+checking for OCaml findlib package re.emacs... not found
+checking for OCaml findlib package re.str... not found
+checking for OCaml findlib package re.perl... not found
+checking for OCaml findlib package re.pcre... not found
+checking for OCaml findlib package re.glob... not found
+checking for OCaml findlib package cmdliner... not found
+checking for OCaml findlib package ocamlgraph... not found
+checking for OCaml findlib package cudf... not found
+checking for OCaml findlib package dose3.common... not found
+checking for OCaml findlib package dose3.algo... not found
+checking for OCaml findlib package jsonm... not found
+
+============================================================================
+Some dependencies are missing. If you are just interested in the stand-alone
+binaries, run 'make lib-ext' to download and include them.
+============================================================================
+
+configure: creating ./config.status
+config.status: creating Makefile.config
+config.status: creating META
+config.status: creating src/core/opamVersion.ml
+config.status: creating src/core/opamCoreConfig.ml
+config.status: creating opam.install
+
+Executables will be installed in /mingw64/bin
+Manual pages will be installed in /mingw64/share/man
+make -C src_ext lib-ext
+make[1]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+rm -f extlib.tar.gz extlib.stamp extlib.pkgbuild && ([ -e  extlib.tar.gz ] || cp archives/extlib-1.5.3.tar.gz extlib.tar.gz || curl  -L -o extlib.tar.gz http://ocaml-extlib.googlecode.com/files/extlib-1.5.3.tar.gz) && ocaml ../shell/md5check.ml extlib.tar.gz 3de5f4e0a95fda7b2f3819c4a655b17c
+cp: cannot stat 'archives/extlib-1.5.3.tar.gz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 70897  100 70897    0     0   221k      0 --:--:-- --:--:-- --:--:--  316k
+extlib.tar.gz has the expected MD5.
+mkdir -p tmp-extlib
+cd tmp-extlib && tar xfz ../extlib.tar.gz
+rm -rf extlib
+rm -f re.tar.gz re.stamp re.pkgbuild && ([ -e  re.tar.gz ] || cp archives/ocaml-re-1.2.0.tar.gz re.tar.gz || curl  -L -o re.tar.gz https://github.com/ocaml/ocaml-re/archive/ocaml-re-1.2.0.tar.gz) && ocaml ../shell/md5check.ml re.tar.gz 5cbfc137683ef2b0e91f931577f2e673
+cp: cannot stat 'archives/ocaml-re-1.2.0.tar.gz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   130    0   130    0     0    131      0 --:--:-- --:--:-- --:--:--   136
+  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100 69943    0 69943    0     0  28501      0 --:--:--  0:00:02 --:--:-- 72180100 82965    0 82965    0     0  33808      0 --:--:--  0:00:02 --:--:-- 85619
+re.tar.gz has the expected MD5.
+mkdir -p tmp-re
+cd tmp-re && tar xfz ../re.tar.gz
+rm -rf re
+rm -f cmdliner.tbz cmdliner.stamp cmdliner.pkgbuild && ([ -e  cmdliner.tbz ] || cp archives/cmdliner-0.9.7.tbz cmdliner.tbz || curl  -L -o cmdliner.tbz http://erratique.ch/software/cmdliner/releases/cmdliner-0.9.7.tbz) && ocaml ../shell/md5check.ml cmdliner.tbz 46d7553b95f623f811df2a844fb448fb
+cp: cannot stat 'archives/cmdliner-0.9.7.tbz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 10 50343   10  5399    0     0   7048      0  0:00:07 --:--:--  0:00:07 10463100 50343  100 50343    0     0  32542      0  0:00:01  0:00:01 --:--:-- 38814
+cmdliner.tbz has the expected MD5.
+mkdir -p tmp-cmdliner
+cd tmp-cmdliner && tar xfj ../cmdliner.tbz
+rm -rf cmdliner
+patching file src/cmdliner.ml
+rm -f graph.tar.gz graph.stamp graph.pkgbuild && ([ -e  graph.tar.gz ] || cp archives/ocamlgraph-1.8.5.tar.gz graph.tar.gz || curl  -L -o graph.tar.gz http://ocamlgraph.lri.fr/download/ocamlgraph-1.8.5.tar.gz) && ocaml ../shell/md5check.ml graph.tar.gz 75dde65bfc3f9b07e795343d369aa84d
+cp: cannot stat 'archives/ocamlgraph-1.8.5.tar.gz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  7  263k    7 19526    0     0  15054      0  0:00:17  0:00:01  0:00:16 15054 18  263k   18 50634    0     0  22188      0  0:00:12  0:00:02  0:00:10 22188 46  263k   46  122k    0     0  38084      0  0:00:07  0:00:03  0:00:04 38084 73  263k   73  193k    0     0  46167      0  0:00:05  0:00:04  0:00:01 46167100  263k  100  263k    0     0  56344      0  0:00:04  0:00:04 --:--:-- 58842
+graph.tar.gz has the expected MD5.
+mkdir -p tmp-graph
+cd tmp-graph && tar xfz ../graph.tar.gz
+rm -rf graph
+rm -f cudf.tar.gz cudf.stamp cudf.pkgbuild && (([ -e  cudf.tar.gz ] || cp archives/cudf-0.7.tar.gz cudf.tar.gz || curl  -L -o cudf.tar.gz https://gforge.inria.fr/frs/download.php/file/33593/cudf-0.7.tar.gz) && ocaml ../shell/md5check.ml cudf.tar.gz 2047222fcf78278c6a24ac619fc39abb || (rm cudf.tar.gz && false)) || (([ -e  cudf.tar.gz ] || cp archives/cudf.0.7+opam.tar.gz cudf.tar.gz || curl  -L -o cudf.tar.gz http://opam.ocaml.org/archives/cudf.0.7+opam.tar.gz) && ocaml ../shell/md5check.ml cudf.tar.gz b12d933a96bd326e2443241faca7aa8c)
+cp: cannot stat 'archives/cudf-0.7.tar.gz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 89 54821   89 49152    0     0  23653      0  0:00:02  0:00:02 --:--:-- 28086100 54821  100 54821    0     0  26381      0  0:00:02  0:00:02 --:--:-- 31326
+cudf.tar.gz has the expected MD5.
+mkdir -p tmp-cudf
+cd tmp-cudf && tar xfz ../cudf.tar.gz
+rm -rf cudf
+rm -f dose.tar.gz dose.stamp dose.pkgbuild && (([ -e  dose.tar.gz ] || cp archives/dose3-3.3.tar.gz dose.tar.gz || curl  -L -o dose.tar.gz https://gforge.inria.fr/frs/download.php/file/34277/dose3-3.3.tar.gz) && ocaml ../shell/md5check.ml dose.tar.gz ea947804c636059bb8b64dbda5c1df08 || (rm dose.tar.gz && false)) || (([ -e  dose.tar.gz ] || cp archives/dose.3.3+opam.tar.gz dose.tar.gz || curl  -L -o dose.tar.gz http://opam.ocaml.org/archives/dose.3.3+opam.tar.gz) && ocaml ../shell/md5check.ml dose.tar.gz 6c14696d8ab24fb88c1e592b8518c48a)
+cp: cannot stat 'archives/dose3-3.3.tar.gz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 19  251k   19 49152    0     0  27352      0  0:00:09  0:00:01  0:00:08 27582100  251k  100  251k    0     0  99944      0  0:00:02  0:00:02 --:--:--   98k
+dose.tar.gz has the expected MD5.
+mkdir -p tmp-dose
+cd tmp-dose && tar xfz ../dose.tar.gz
+rm -rf dose
+patching file algo/defaultgraphs.ml
+patching file algo/depsolver.ml
+patching file algo/depsolver_int.ml
+patching file algo/diagnostic.ml
+patching file algo/dominators.ml
+patching file algo/flatten.ml
+patching file algo/statistics.ml
+patching file algo/strongconflicts.ml
+patching file algo/strongconflicts_int.ml
+patching file algo/strongdeps.ml
+patching file algo/strongdeps_int.ml
+patching file applications/ceve.ml
+patching file applications/challenged.ml
+patching file applications/deb-buildcheck.ml
+patching file applications/deb-coinstall.ml
+patching file applications/distcheck.ml
+patching file applications/dominators-graph.ml
+patching file applications/outdated.ml
+patching file applications/smallworld.ml
+patching file applications/strong-deps.ml
+patching file common/cudfAdd.ml
+patching file common/cudfSolver.ml
+patching file common/edosSolver.ml
+patching file common/input.ml
+patching file common/url.ml
+patching file common/util.ml
+patching file common/util.mli
+patching file cv/cvcudf.ml
+patching file deb/apt.ml
+patching file deb/architecture.ml
+patching file deb/debcudf.ml
+patching file deb/debutil.ml
+patching file deb/edsp.ml
+patching file deb/format822.ml
+patching file deb/packages.ml
+patching file deb/sources.ml
+patching file doseparse/stdDebug.ml
+patching file doseparse/stdLoaders.ml
+patching file doseparse/stdOptions.ml
+patching file doseparse/stdUtils.ml
+patching file eclipse/packages.ml
+patching file eclipse/version.ml
+patching file opencsw/packages.ml
+patching file opencsw/version.ml
+patching file rpm/hdlists.ml
+patching file rpm/packages.ml
+patching file rpm/rpmcudf.ml
+patching file applications/ceve.ml
+patching file applications/challenged.ml
+patching file common/input.ml
+patching file common/input.mli
+patching file doseparse/stdLoaders.ml
+patching file algo/depsolver.ml
+rm -f uutf.tbz uutf.stamp uutf.pkgbuild && ([ -e  uutf.tbz ] || cp archives/uutf-0.9.3.tbz uutf.tbz || curl  -L -o uutf.tbz http://erratique.ch/software/uutf/releases/uutf-0.9.3.tbz) && ocaml ../shell/md5check.ml uutf.tbz 708c0421e158b390c7cc341f37b40add
+cp: cannot stat 'archives/uutf-0.9.3.tbz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 52 31734   52 16711    0     0  20182      0  0:00:01 --:--:--  0:00:01 20554100 31734  100 31734    0     0  38326      0 --:--:-- --:--:-- --:--:-- 39033
+uutf.tbz has the expected MD5.
+mkdir -p tmp-uutf
+cd tmp-uutf && tar xfj ../uutf.tbz
+rm -rf uutf
+rm -f jsonm.tbz jsonm.stamp jsonm.pkgbuild && ([ -e  jsonm.tbz ] || cp archives/jsonm-0.9.1.tbz jsonm.tbz || curl  -L -o jsonm.tbz http://erratique.ch/software/jsonm/releases/jsonm-0.9.1.tbz) && ocaml ../shell/md5check.ml jsonm.tbz 631a5dabdada83236c83056f60e42685
+cp: cannot stat 'archives/jsonm-0.9.1.tbz': No such file or directory
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 56 64843   56 36507    0     0  34868      0  0:00:01  0:00:01 --:--:-- 34868100 64843  100 64843    0     0  49385      0  0:00:01  0:00:01 --:--:-- 49385
+jsonm.tbz has the expected MD5.
+mkdir -p tmp-jsonm
+cd tmp-jsonm && tar xfj ../jsonm.tbz
+rm -rf jsonm
+cp graph/src/sig.mli graph/src/sig.ml
+cp graph/src/sig_pack.mli graph/src/sig_pack.ml
+cp graph/src/dot_ast.mli graph/src/dot_ast.ml
+make proj_extlib proj_re proj_cmdliner proj_graph proj_cudf proj_dose_common proj_dose_debian proj_dose_algo proj_uutf proj_jsonm
+make[2]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_extlib SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I extlib/ extlib/extArray.mli > ._bcdi/extlib/extArray.di
+ocamldep.opt -slash -I extlib/ extlib/base64.mli > ._bcdi/extlib/base64.di
+ocamldep.opt -slash -I extlib/ extlib/bitSet.mli > ._bcdi/extlib/bitSet.di
+ocamldep.opt -slash -I extlib/ extlib/dllist.mli > ._bcdi/extlib/dllist.di
+ocamldep.opt -slash -I extlib/ extlib/dynArray.mli > ._bcdi/extlib/dynArray.di
+ocamldep.opt -slash -I extlib/ extlib/optParse.mli > ._bcdi/extlib/optParse.di
+ocamldep.opt -slash -I extlib/ extlib/uTF8.mli > ._bcdi/extlib/uTF8.di
+ocamldep.opt -slash -I extlib/ extlib/unzip.mli > ._bcdi/extlib/unzip.di
+ocamldep.opt -slash -I extlib/ extlib/uChar.mli > ._bcdi/extlib/uChar.di
+ocamldep.opt -slash -I extlib/ extlib/std.mli > ._bcdi/extlib/std.di
+ocamldep.opt -slash -I extlib/ extlib/refList.mli > ._bcdi/extlib/refList.di
+ocamldep.opt -slash -I extlib/ extlib/pMap.mli > ._bcdi/extlib/pMap.di
+ocamldep.opt -slash -I extlib/ extlib/option.mli > ._bcdi/extlib/option.di
+ocamldep.opt -slash -I extlib/ extlib/IO.mli > ._bcdi/extlib/IO.di
+ocamldep.opt -slash -I extlib/ extlib/global.mli > ._bcdi/extlib/global.di
+ocamldep.opt -slash -I extlib/ extlib/extString.mli > ._bcdi/extlib/extString.di
+ocamldep.opt -slash -I extlib/ extlib/extList.mli > ._bcdi/extlib/extList.di
+ocamldep.opt -slash -I extlib/ extlib/extHashtbl.mli > ._bcdi/extlib/extHashtbl.di
+ocamldep.opt -slash -I extlib/ extlib/enum.mli > ._bcdi/extlib/enum.di
+ocamldep.opt -slash -I extlib/ extlib/extLib.ml > ._d/extlib/extLib.d
+ocamldep.opt -slash -I extlib/ extlib/extArray.ml > ._d/extlib/extArray.d
+ocamldep.opt -slash -I extlib/ extlib/base64.ml > ._d/extlib/base64.d
+ocamldep.opt -slash -I extlib/ extlib/bitSet.ml > ._d/extlib/bitSet.d
+ocamldep.opt -slash -I extlib/ extlib/dllist.ml > ._d/extlib/dllist.d
+ocamldep.opt -slash -I extlib/ extlib/dynArray.ml > ._d/extlib/dynArray.d
+ocamldep.opt -slash -I extlib/ extlib/optParse.ml > ._d/extlib/optParse.d
+ocamldep.opt -slash -I extlib/ extlib/uTF8.ml > ._d/extlib/uTF8.d
+ocamldep.opt -slash -I extlib/ extlib/unzip.ml > ._d/extlib/unzip.d
+ocamldep.opt -slash -I extlib/ extlib/uChar.ml > ._d/extlib/uChar.d
+ocamldep.opt -slash -I extlib/ extlib/std.ml > ._d/extlib/std.d
+ocamldep.opt -slash -I extlib/ extlib/refList.ml > ._d/extlib/refList.d
+ocamldep.opt -slash -I extlib/ extlib/pMap.ml > ._d/extlib/pMap.d
+ocamldep.opt -slash -I extlib/ extlib/option.ml > ._d/extlib/option.d
+ocamldep.opt -slash -I extlib/ extlib/IO.ml > ._d/extlib/IO.d
+ocamldep.opt -slash -I extlib/ extlib/install.ml > ._d/extlib/install.d
+ocamldep.opt -slash -I extlib/ extlib/global.ml > ._d/extlib/global.d
+ocamldep.opt -slash -I extlib/ extlib/extString.ml > ._d/extlib/extString.d
+ocamldep.opt -slash -I extlib/ extlib/extList.ml > ._d/extlib/extList.d
+ocamldep.opt -slash -I extlib/ extlib/extHashtbl.ml > ._d/extlib/extHashtbl.d
+ocamldep.opt -slash -I extlib/ extlib/enum.ml > ._d/extlib/enum.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I extlib/ extlib/enum.mli
+ocamlc.opt -c -I extlib/ extlib/enum.ml
+ocamlc.opt -c -I extlib/ extlib/extHashtbl.mli
+ocamlc.opt -c -I extlib/ extlib/extHashtbl.ml
+ocamlc.opt -c -I extlib/ extlib/extList.mli
+ocamlc.opt -c -I extlib/ extlib/extList.ml
+ocamlc.opt -c -I extlib/ extlib/extString.mli
+ocamlc.opt -c -I extlib/ extlib/extString.ml
+File "extlib/extString.ml", line 28, characters 9-15:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 30, characters 2-12:
+Warning 3: deprecated: unsafe_set
+File "extlib/extString.ml", line 125, characters 2-8:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 172, characters 9-15:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 174, characters 21-31:
+Warning 3: deprecated: unsafe_set
+File "extlib/extString.ml", line 179, characters 10-16:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 181, characters 2-12:
+Warning 3: deprecated: unsafe_set
+File "extlib/extString.ml", line 211, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 214, characters 14-26:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "extlib/extString.ml", line 230, characters 12-18:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 249, characters 28-39:
+Warning 3: deprecated: String.copy
+ocamlc.opt -c -I extlib/ extlib/global.mli
+ocamlc.opt -c -I extlib/ extlib/global.ml
+ocamlc.opt -c -I extlib/ extlib/install.ml
+ocamlc.opt -c -I extlib/ extlib/IO.mli
+ocamlc.opt -c -I extlib/ extlib/IO.ml
+File "extlib/IO.ml", line 65, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 119, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 176, characters 13-26:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 293, characters 6-23:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/IO.ml", line 709, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 726, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 728, characters 2-19:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/IO.ml", line 745, characters 4-21:
+Warning 3: deprecated: String.unsafe_set
+ocamlc.opt -c -I extlib/ extlib/option.mli
+ocamlc.opt -c -I extlib/ extlib/option.ml
+ocamlc.opt -c -I extlib/ extlib/pMap.mli
+ocamlc.opt -c -I extlib/ extlib/pMap.ml
+ocamlc.opt -c -I extlib/ extlib/refList.mli
+ocamlc.opt -c -I extlib/ extlib/refList.ml
+ocamlc.opt -c -I extlib/ extlib/std.mli
+ocamlc.opt -c -I extlib/ extlib/std.ml
+File "extlib/std.ml", line 52, characters 16-29:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/std.ml", line 65, characters 37-50:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/std.ml", line 67, characters 13-26:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/std.ml", line 162, characters 14-27:
+Warning 3: deprecated: Obj.final_tag
+Replaced by custom_tag.
+ocamlc.opt -c -I extlib/ extlib/uChar.mli
+ocamlc.opt -c -I extlib/ extlib/uChar.ml
+ocamlc.opt -c -I extlib/ extlib/unzip.mli
+ocamlc.opt -c -I extlib/ extlib/unzip.ml
+File "extlib/unzip.ml", line 172, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/unzip.ml", line 179, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/unzip.ml", line 191, characters 1-18:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/unzip.ml", line 259, characters 1-18:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/unzip.ml", line 436, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+ocamlc.opt -c -I extlib/ extlib/uTF8.mli
+ocamlc.opt -c -I extlib/ extlib/uTF8.ml
+ocamlc.opt -c -I extlib/ extlib/optParse.mli
+ocamlc.opt -c -I extlib/ extlib/optParse.ml
+ocamlc.opt -c -I extlib/ extlib/dynArray.mli
+ocamlc.opt -c -I extlib/ extlib/dynArray.ml
+ocamlc.opt -c -I extlib/ extlib/dllist.mli
+ocamlc.opt -c -I extlib/ extlib/dllist.ml
+ocamlc.opt -c -I extlib/ extlib/bitSet.mli
+ocamlc.opt -c -I extlib/ extlib/bitSet.ml
+File "extlib/bitSet.ml", line 23, characters 40-53:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/bitSet.ml", line 28, characters 64-75:
+Warning 3: deprecated: String.fill
+Use Bytes.fill instead.
+ocamlc.opt -c -I extlib/ extlib/base64.mli
+ocamlc.opt -c -I extlib/ extlib/base64.ml
+File "extlib/base64.ml", line 98, characters 4-21:
+Warning 3: deprecated: String.unsafe_set
+ocamlc.opt -c -I extlib/ extlib/extArray.mli
+ocamlc.opt -c -I extlib/ extlib/extArray.ml
+ocamlc.opt -c -I extlib/ extlib/extLib.ml
+ocamlc.opt -a      -I extlib/    -ccopt -pipe -ccopt -Lextlib/     -o extlib.cma extlib/enum.cmo extlib/extHashtbl.cmo extlib/extList.cmo extlib/extString.cmo extlib/global.cmo extlib/install.cmo extlib/IO.cmo extlib/option.cmo extlib/pMap.cmo extlib/refList.cmo extlib/std.cmo extlib/uChar.cmo extlib/unzip.cmo extlib/uTF8.cmo extlib/optParse.cmo extlib/dynArray.cmo extlib/dllist.cmo extlib/bitSet.cmo extlib/base64.cmo extlib/extArray.cmo extlib/extLib.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I extlib/ extlib/extArray.mli > ._ncdi/extlib/extArray.di
+ocamldep.opt -slash -native -I extlib/ extlib/base64.mli > ._ncdi/extlib/base64.di
+ocamldep.opt -slash -native -I extlib/ extlib/bitSet.mli > ._ncdi/extlib/bitSet.di
+ocamldep.opt -slash -native -I extlib/ extlib/dllist.mli > ._ncdi/extlib/dllist.di
+ocamldep.opt -slash -native -I extlib/ extlib/dynArray.mli > ._ncdi/extlib/dynArray.di
+ocamldep.opt -slash -native -I extlib/ extlib/optParse.mli > ._ncdi/extlib/optParse.di
+ocamldep.opt -slash -native -I extlib/ extlib/uTF8.mli > ._ncdi/extlib/uTF8.di
+ocamldep.opt -slash -native -I extlib/ extlib/unzip.mli > ._ncdi/extlib/unzip.di
+ocamldep.opt -slash -native -I extlib/ extlib/uChar.mli > ._ncdi/extlib/uChar.di
+ocamldep.opt -slash -native -I extlib/ extlib/std.mli > ._ncdi/extlib/std.di
+ocamldep.opt -slash -native -I extlib/ extlib/refList.mli > ._ncdi/extlib/refList.di
+ocamldep.opt -slash -native -I extlib/ extlib/pMap.mli > ._ncdi/extlib/pMap.di
+ocamldep.opt -slash -native -I extlib/ extlib/option.mli > ._ncdi/extlib/option.di
+ocamldep.opt -slash -native -I extlib/ extlib/IO.mli > ._ncdi/extlib/IO.di
+ocamldep.opt -slash -native -I extlib/ extlib/global.mli > ._ncdi/extlib/global.di
+ocamldep.opt -slash -native -I extlib/ extlib/extString.mli > ._ncdi/extlib/extString.di
+ocamldep.opt -slash -native -I extlib/ extlib/extList.mli > ._ncdi/extlib/extList.di
+ocamldep.opt -slash -native -I extlib/ extlib/extHashtbl.mli > ._ncdi/extlib/extHashtbl.di
+ocamldep.opt -slash -native -I extlib/ extlib/enum.mli > ._ncdi/extlib/enum.di
+ocamlopt.opt -c -I extlib/ extlib/enum.ml
+ocamlopt.opt -c -I extlib/ extlib/extHashtbl.ml
+ocamlopt.opt -c -I extlib/ extlib/extList.ml
+ocamlopt.opt -c -I extlib/ extlib/extString.ml
+File "extlib/extString.ml", line 28, characters 9-15:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 30, characters 2-12:
+Warning 3: deprecated: unsafe_set
+File "extlib/extString.ml", line 125, characters 2-8:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 172, characters 9-15:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 174, characters 21-31:
+Warning 3: deprecated: unsafe_set
+File "extlib/extString.ml", line 179, characters 10-16:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 181, characters 2-12:
+Warning 3: deprecated: unsafe_set
+File "extlib/extString.ml", line 211, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 214, characters 14-26:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "extlib/extString.ml", line 230, characters 12-18:
+Warning 3: deprecated: create
+Use Bytes.create instead.
+File "extlib/extString.ml", line 249, characters 28-39:
+Warning 3: deprecated: String.copy
+ocamlopt.opt -c -I extlib/ extlib/global.ml
+ocamlopt.opt -c -I extlib/ extlib/install.ml
+ocamlopt.opt -c -I extlib/ extlib/IO.ml
+File "extlib/IO.ml", line 65, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 119, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 176, characters 13-26:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 293, characters 6-23:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/IO.ml", line 709, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 726, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/IO.ml", line 728, characters 2-19:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/IO.ml", line 745, characters 4-21:
+Warning 3: deprecated: String.unsafe_set
+ocamlopt.opt -c -I extlib/ extlib/option.ml
+ocamlopt.opt -c -I extlib/ extlib/pMap.ml
+ocamlopt.opt -c -I extlib/ extlib/refList.ml
+ocamlopt.opt -c -I extlib/ extlib/std.ml
+File "extlib/std.ml", line 52, characters 16-29:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/std.ml", line 65, characters 37-50:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/std.ml", line 67, characters 13-26:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/std.ml", line 162, characters 14-27:
+Warning 3: deprecated: Obj.final_tag
+Replaced by custom_tag.
+ocamlopt.opt -c -I extlib/ extlib/uChar.ml
+ocamlopt.opt -c -I extlib/ extlib/unzip.ml
+File "extlib/unzip.ml", line 172, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/unzip.ml", line 179, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/unzip.ml", line 191, characters 1-18:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/unzip.ml", line 259, characters 1-18:
+Warning 3: deprecated: String.unsafe_set
+File "extlib/unzip.ml", line 436, characters 9-22:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+ocamlopt.opt -c -I extlib/ extlib/uTF8.ml
+ocamlopt.opt -c -I extlib/ extlib/optParse.ml
+ocamlopt.opt -c -I extlib/ extlib/dynArray.ml
+ocamlopt.opt -c -I extlib/ extlib/dllist.ml
+ocamlopt.opt -c -I extlib/ extlib/bitSet.ml
+File "extlib/bitSet.ml", line 23, characters 40-53:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "extlib/bitSet.ml", line 28, characters 64-75:
+Warning 3: deprecated: String.fill
+Use Bytes.fill instead.
+ocamlopt.opt -c -I extlib/ extlib/base64.ml
+File "extlib/base64.ml", line 98, characters 4-21:
+Warning 3: deprecated: String.unsafe_set
+ocamlopt.opt -c -I extlib/ extlib/extArray.ml
+ocamlopt.opt -c -I extlib/ extlib/extLib.ml
+ocamlopt.opt -a       -I extlib/    -ccopt -pipe -ccopt -Lextlib/    -o extlib.cmxa extlib/enum.cmx extlib/extHashtbl.cmx extlib/extList.cmx extlib/extString.cmx extlib/global.cmx extlib/install.cmx extlib/IO.cmx extlib/option.cmx extlib/pMap.cmx extlib/refList.cmx extlib/std.cmx extlib/uChar.cmx extlib/unzip.cmx extlib/uTF8.cmx extlib/optParse.cmx extlib/dynArray.cmx extlib/dllist.cmx extlib/bitSet.cmx extlib/base64.cmx extlib/extArray.cmx extlib/extLib.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_re SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I re/lib/ re/lib/re_str.mli > ._bcdi/re/lib/re_str.di
+ocamldep.opt -slash -I re/lib/ re/lib/re_glob.mli > ._bcdi/re/lib/re_glob.di
+ocamldep.opt -slash -I re/lib/ re/lib/re_emacs.mli > ._bcdi/re/lib/re_emacs.di
+ocamldep.opt -slash -I re/lib/ re/lib/re_perl.mli > ._bcdi/re/lib/re_perl.di
+ocamldep.opt -slash -I re/lib/ re/lib/re.mli > ._bcdi/re/lib/re.di
+ocamldep.opt -slash -I re/lib/ re/lib/automata.mli > ._bcdi/re/lib/automata.di
+ocamldep.opt -slash -I re/lib/ re/lib/cset.mli > ._bcdi/re/lib/cset.di
+ocamldep.opt -slash -I re/lib/ re/lib/re_str.ml > ._d/re/lib/re_str.d
+ocamldep.opt -slash -I re/lib/ re/lib/re_glob.ml > ._d/re/lib/re_glob.d
+ocamldep.opt -slash -I re/lib/ re/lib/re_emacs.ml > ._d/re/lib/re_emacs.d
+ocamldep.opt -slash -I re/lib/ re/lib/re_pcre.ml > ._d/re/lib/re_pcre.d
+ocamldep.opt -slash -I re/lib/ re/lib/re_perl.ml > ._d/re/lib/re_perl.d
+ocamldep.opt -slash -I re/lib/ re/lib/re.ml > ._d/re/lib/re.d
+ocamldep.opt -slash -I re/lib/ re/lib/automata.ml > ._d/re/lib/automata.d
+ocamldep.opt -slash -I re/lib/ re/lib/cset.ml > ._d/re/lib/cset.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I re/lib/ re/lib/cset.mli
+ocamlc.opt -c -I re/lib/ re/lib/cset.ml
+ocamlc.opt -c -I re/lib/ re/lib/automata.mli
+ocamlc.opt -c -I re/lib/ re/lib/automata.ml
+File "re/lib/automata.ml", line 641, characters 12-24:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "re/lib/automata.ml", line 95, characters 4-21:
+Warning 26: unused variable x.
+File "re/lib/automata.ml", line 306, characters 4-17:
+Warning 26: unused variable x.
+ocamlc.opt -c -I re/lib/ re/lib/re.mli
+ocamlc.opt -c -I re/lib/ re/lib/re.ml
+File "re/lib/re.ml", line 439, characters 17-33:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 439, characters 35-55:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 478, characters 10-23:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re.ml", line 479, characters 17-30:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re.ml", line 481, characters 2-17:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 482, characters 2-24:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 485, characters 4-24:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 486, characters 4-31:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 461, characters 21-30:
+Warning 12: this sub-pattern is unused.
+File "re/lib/re.ml", line 889, characters 16-45:
+Warning 26: unused variable m.
+File "re/lib/re.ml", line 903, characters 12-41:
+Warning 26: unused variable m.
+ocamlc.opt -c -I re/lib/ re/lib/re_perl.mli
+ocamlc.opt -c -I re/lib/ re/lib/re_perl.ml
+ocamlc.opt -c -I re/lib/ re/lib/re_pcre.ml
+File "re/lib/re_pcre.ml", line 60, characters 10-23:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_pcre.ml", line 66, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_pcre.ml", line 72, characters 6-23:
+Warning 3: deprecated: String.unsafe_set
+File "re/lib/re_pcre.ml", line 74, characters 6-23:
+Warning 3: deprecated: String.unsafe_set
+File "re/lib/re_pcre.ml", line 75, characters 11-28:
+Warning 3: deprecated: String.unsafe_set
+ocamlc.opt -c -I re/lib/ re/lib/re_emacs.mli
+ocamlc.opt -c -I re/lib/ re/lib/re_emacs.ml
+File "re/lib/re_emacs.ml", line 34, characters 6-11:
+Warning 26: unused variable unget.
+ocamlc.opt -c -I re/lib/ re/lib/re_glob.mli
+ocamlc.opt -c -I re/lib/ re/lib/re_glob.ml
+File "re/lib/re_glob.ml", line 43, characters 6-11:
+Warning 26: unused variable unget.
+File "re/lib/re_glob.ml", line 67, characters 10-14:
+Warning 26: unused variable mask.
+ocamlc.opt -c -I re/lib/ re/lib/re_str.mli
+ocamlc.opt -c -I re/lib/ re/lib/re_str.ml
+File "re/lib/re_str.ml", line 119, characters 6-18:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 124, characters 10-25:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 142, characters 10-25:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 143, characters 10-26:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 150, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_str.ml", line 156, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_str.ml", line 161, characters 8-26:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 161, characters 28-47:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 163, characters 8-23:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+ocamlc.opt -a      -I re/lib/    -ccopt -pipe -ccopt -Lre/lib/     -o re.cma re/lib/cset.cmo re/lib/automata.cmo re/lib/re.cmo re/lib/re_perl.cmo re/lib/re_pcre.cmo re/lib/re_emacs.cmo re/lib/re_glob.cmo re/lib/re_str.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I re/lib/ re/lib/re_str.mli > ._ncdi/re/lib/re_str.di
+ocamldep.opt -slash -native -I re/lib/ re/lib/re_glob.mli > ._ncdi/re/lib/re_glob.di
+ocamldep.opt -slash -native -I re/lib/ re/lib/re_emacs.mli > ._ncdi/re/lib/re_emacs.di
+ocamldep.opt -slash -native -I re/lib/ re/lib/re_perl.mli > ._ncdi/re/lib/re_perl.di
+ocamldep.opt -slash -native -I re/lib/ re/lib/re.mli > ._ncdi/re/lib/re.di
+ocamldep.opt -slash -native -I re/lib/ re/lib/automata.mli > ._ncdi/re/lib/automata.di
+ocamldep.opt -slash -native -I re/lib/ re/lib/cset.mli > ._ncdi/re/lib/cset.di
+ocamlopt.opt -c -I re/lib/ re/lib/cset.ml
+ocamlopt.opt -c -I re/lib/ re/lib/automata.ml
+File "re/lib/automata.ml", line 641, characters 12-24:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "re/lib/automata.ml", line 95, characters 4-21:
+Warning 26: unused variable x.
+File "re/lib/automata.ml", line 306, characters 4-17:
+Warning 26: unused variable x.
+ocamlopt.opt -c -I re/lib/ re/lib/re.ml
+File "re/lib/re.ml", line 439, characters 17-33:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 439, characters 35-55:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 478, characters 10-23:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re.ml", line 479, characters 17-30:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re.ml", line 481, characters 2-17:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 482, characters 2-24:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 485, characters 4-24:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 486, characters 4-31:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re.ml", line 461, characters 21-30:
+Warning 12: this sub-pattern is unused.
+File "re/lib/re.ml", line 889, characters 16-45:
+Warning 26: unused variable m.
+File "re/lib/re.ml", line 903, characters 12-41:
+Warning 26: unused variable m.
+ocamlopt.opt -c -I re/lib/ re/lib/re_perl.ml
+ocamlopt.opt -c -I re/lib/ re/lib/re_pcre.ml
+File "re/lib/re_pcre.ml", line 60, characters 10-23:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_pcre.ml", line 66, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_pcre.ml", line 72, characters 6-23:
+Warning 3: deprecated: String.unsafe_set
+File "re/lib/re_pcre.ml", line 74, characters 6-23:
+Warning 3: deprecated: String.unsafe_set
+File "re/lib/re_pcre.ml", line 75, characters 11-28:
+Warning 3: deprecated: String.unsafe_set
+ocamlopt.opt -c -I re/lib/ re/lib/re_emacs.ml
+File "re/lib/re_emacs.ml", line 34, characters 6-11:
+Warning 26: unused variable unget.
+ocamlopt.opt -c -I re/lib/ re/lib/re_glob.ml
+File "re/lib/re_glob.ml", line 43, characters 6-11:
+Warning 26: unused variable unget.
+File "re/lib/re_glob.ml", line 67, characters 10-14:
+Warning 26: unused variable mask.
+ocamlopt.opt -c -I re/lib/ re/lib/re_str.ml
+File "re/lib/re_str.ml", line 119, characters 6-18:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 124, characters 10-25:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 142, characters 10-25:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 143, characters 10-26:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 150, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_str.ml", line 156, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "re/lib/re_str.ml", line 161, characters 8-26:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 161, characters 28-47:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "re/lib/re_str.ml", line 163, characters 8-23:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+ocamlopt.opt -a       -I re/lib/    -ccopt -pipe -ccopt -Lre/lib/    -o re.cmxa re/lib/cset.cmx re/lib/automata.cmx re/lib/re.cmx re/lib/re_perl.cmx re/lib/re_pcre.cmx re/lib/re_emacs.cmx re/lib/re_glob.cmx re/lib/re_str.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_cmdliner SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I cmdliner/src/ cmdliner/src/cmdliner.mli > ._bcdi/cmdliner/src/cmdliner.di
+ocamldep.opt -slash -I cmdliner/src/ cmdliner/src/cmdliner.ml > ._d/cmdliner/src/cmdliner.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I cmdliner/src/ cmdliner/src/cmdliner.mli
+ocamlc.opt -c -I cmdliner/src/ cmdliner/src/cmdliner.ml
+ocamlc.opt -a      -I cmdliner/src/    -ccopt -pipe -ccopt -Lcmdliner/src/     -o cmdliner.cma cmdliner/src/cmdliner.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I cmdliner/src/ cmdliner/src/cmdliner.mli > ._ncdi/cmdliner/src/cmdliner.di
+ocamlopt.opt -c -I cmdliner/src/ cmdliner/src/cmdliner.ml
+ocamlopt.opt -a       -I cmdliner/src/    -ccopt -pipe -ccopt -Lcmdliner/src/    -o cmdliner.cmxa cmdliner/src/cmdliner.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_graph SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dot_parser.mli > ._bcdi/graph/src/dot_parser.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/md.mli > ._bcdi/graph/src/md.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/cliquetree.mli > ._bcdi/graph/src/cliquetree.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/mcs_m.mli > ._bcdi/graph/src/mcs_m.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/pack.mli > ._bcdi/graph/src/pack.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/topological.mli > ._bcdi/graph/src/topological.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/path.mli > ._bcdi/graph/src/path.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/nonnegative.mli > ._bcdi/graph/src/nonnegative.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/persistent.mli > ._bcdi/graph/src/persistent.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/minsep.mli > ._bcdi/graph/src/minsep.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/merge.mli > ._bcdi/graph/src/merge.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/imperative.mli > ._bcdi/graph/src/imperative.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dot.mli > ._bcdi/graph/src/dot.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/coloring.mli > ._bcdi/graph/src/coloring.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/components.mli > ._bcdi/graph/src/components.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/flow.mli > ._bcdi/graph/src/flow.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/kruskal.mli > ._bcdi/graph/src/kruskal.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/util.mli > ._bcdi/graph/src/util.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/traverse.mli > ._bcdi/graph/src/traverse.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/strat.mli > ._bcdi/graph/src/strat.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/rand.mli > ._bcdi/graph/src/rand.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/oper.mli > ._bcdi/graph/src/oper.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/leaderlist.mli > ._bcdi/graph/src/leaderlist.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/graphviz.mli > ._bcdi/graph/src/graphviz.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/graphml.mli > ._bcdi/graph/src/graphml.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/gml.mli > ._bcdi/graph/src/gml.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/gmap.mli > ._bcdi/graph/src/gmap.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/fixpoint.mli > ._bcdi/graph/src/fixpoint.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dominator.mli > ._bcdi/graph/src/dominator.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/delaunay.mli > ._bcdi/graph/src/delaunay.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/contraction.mli > ._bcdi/graph/src/contraction.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/classic.mli > ._bcdi/graph/src/classic.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/builder.mli > ._bcdi/graph/src/builder.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dot_ast.mli > ._bcdi/graph/src/dot_ast.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/sig.mli > ._bcdi/graph/src/sig.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/sig_pack.mli > ._bcdi/graph/src/sig_pack.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/lib/unionfind.mli > ._bcdi/graph/lib/unionfind.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/lib/heap.mli > ._bcdi/graph/lib/heap.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/lib/bitv.mli > ._bcdi/graph/lib/bitv.di
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dot_parser.ml > ._d/graph/src/dot_parser.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dot_lexer.ml > ._d/graph/src/dot_lexer.d
+ocamllex.opt  graph/src/gml.mll
+26 states, 827 transitions, table size 3464 bytes
+2623 additional bytes used for bindings
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/gml.ml > ._d/graph/src/gml.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/md.ml > ._d/graph/src/md.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/cliquetree.ml > ._d/graph/src/cliquetree.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/mcs_m.ml > ._d/graph/src/mcs_m.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/pack.ml > ._d/graph/src/pack.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/topological.ml > ._d/graph/src/topological.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/path.ml > ._d/graph/src/path.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/nonnegative.ml > ._d/graph/src/nonnegative.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/persistent.ml > ._d/graph/src/persistent.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/minsep.ml > ._d/graph/src/minsep.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/merge.ml > ._d/graph/src/merge.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/imperative.ml > ._d/graph/src/imperative.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dot.ml > ._d/graph/src/dot.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/blocks.ml > ._d/graph/src/blocks.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/coloring.ml > ._d/graph/src/coloring.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/components.ml > ._d/graph/src/components.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/flow.ml > ._d/graph/src/flow.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/kruskal.ml > ._d/graph/src/kruskal.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/version.ml > ._d/graph/src/version.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/util.ml > ._d/graph/src/util.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/traverse.ml > ._d/graph/src/traverse.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/strat.ml > ._d/graph/src/strat.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/rand.ml > ._d/graph/src/rand.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/oper.ml > ._d/graph/src/oper.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/leaderlist.ml > ._d/graph/src/leaderlist.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/graphviz.ml > ._d/graph/src/graphviz.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/graphml.ml > ._d/graph/src/graphml.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/gmap.ml > ._d/graph/src/gmap.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/fixpoint.ml > ._d/graph/src/fixpoint.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dominator.ml > ._d/graph/src/dominator.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/delaunay.ml > ._d/graph/src/delaunay.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/contraction.ml > ._d/graph/src/contraction.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/classic.ml > ._d/graph/src/classic.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/builder.ml > ._d/graph/src/builder.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/dot_ast.ml > ._d/graph/src/dot_ast.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/sig.ml > ._d/graph/src/sig.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/src/sig_pack.ml > ._d/graph/src/sig_pack.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/lib/unionfind.ml > ._d/graph/lib/unionfind.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/lib/heap.ml > ._d/graph/lib/heap.d
+ocamldep.opt -slash -I graph/lib/ -I graph/src/ graph/lib/bitv.ml > ._d/graph/lib/bitv.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/lib/bitv.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/lib/bitv.ml
+File "graph/lib/bitv.ml", line 51, characters 15-27:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 68, characters 25-37:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 71, characters 12-24:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 368, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 380, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 392, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 401, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 464, characters 27-39:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/lib/heap.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/lib/heap.ml
+File "graph/lib/heap.ml", line 54, characters 13-25:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/heap.ml", line 61, characters 16-28:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/lib/unionfind.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/lib/unionfind.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/sig_pack.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/sig_pack.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/sig.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/sig.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/dot_ast.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot_ast.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/builder.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/builder.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/classic.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/classic.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/contraction.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/contraction.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/delaunay.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/delaunay.ml
+File "graph/src/delaunay.ml", line 260, characters 19-31:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/dominator.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dominator.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/dot_parser.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot_parser.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/fixpoint.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/fixpoint.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/gmap.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/gmap.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/gml.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/gml.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/graphml.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/graphml.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/graphviz.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/graphviz.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/leaderlist.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/leaderlist.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/oper.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/oper.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/rand.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/rand.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/strat.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/strat.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/traverse.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/traverse.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/util.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/util.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/version.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/kruskal.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/kruskal.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/flow.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/flow.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot_lexer.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/components.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/components.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/coloring.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/coloring.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/blocks.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/dot.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/imperative.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/imperative.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/merge.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/merge.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/minsep.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/minsep.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/persistent.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/persistent.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/nonnegative.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/nonnegative.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/path.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/path.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/topological.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/topological.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/pack.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/pack.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/mcs_m.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/mcs_m.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/cliquetree.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/cliquetree.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/md.mli
+ocamlc.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/md.ml
+ocamlc.opt -pack -o graph.cmo  graph/lib/bitv.cmo graph/lib/heap.cmo graph/lib/unionfind.cmo graph/src/sig_pack.cmo graph/src/sig.cmo graph/src/dot_ast.cmo graph/src/builder.cmo graph/src/classic.cmo graph/src/contraction.cmo graph/src/delaunay.cmo graph/src/dominator.cmo graph/src/dot_parser.cmo graph/src/fixpoint.cmo graph/src/gmap.cmo graph/src/gml.cmo graph/src/graphml.cmo graph/src/graphviz.cmo graph/src/leaderlist.cmo graph/src/oper.cmo graph/src/rand.cmo graph/src/strat.cmo graph/src/traverse.cmo graph/src/util.cmo graph/src/version.cmo graph/src/kruskal.cmo graph/src/flow.cmo graph/src/dot_lexer.cmo graph/src/components.cmo graph/src/coloring.cmo graph/src/blocks.cmo graph/src/dot.cmo graph/src/imperative.cmo graph/src/merge.cmo graph/src/minsep.cmo graph/src/persistent.cmo graph/src/nonnegative.cmo graph/src/path.cmo graph/src/topological.cmo graph/src/pack.cmo graph/src/mcs_m.cmo graph/src/cliquetree.cmo graph/src/md.cmo
+ocamlc.opt -a      -I graph/lib/ -I graph/src/    -ccopt -pipe -ccopt -Lgraph/lib/ -ccopt -Lgraph/src/     -o graph.cma graph.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/dot_parser.mli > ._ncdi/graph/src/dot_parser.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/md.mli > ._ncdi/graph/src/md.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/cliquetree.mli > ._ncdi/graph/src/cliquetree.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/mcs_m.mli > ._ncdi/graph/src/mcs_m.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/pack.mli > ._ncdi/graph/src/pack.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/topological.mli > ._ncdi/graph/src/topological.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/path.mli > ._ncdi/graph/src/path.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/nonnegative.mli > ._ncdi/graph/src/nonnegative.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/persistent.mli > ._ncdi/graph/src/persistent.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/minsep.mli > ._ncdi/graph/src/minsep.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/merge.mli > ._ncdi/graph/src/merge.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/imperative.mli > ._ncdi/graph/src/imperative.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/dot.mli > ._ncdi/graph/src/dot.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/coloring.mli > ._ncdi/graph/src/coloring.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/components.mli > ._ncdi/graph/src/components.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/flow.mli > ._ncdi/graph/src/flow.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/kruskal.mli > ._ncdi/graph/src/kruskal.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/util.mli > ._ncdi/graph/src/util.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/traverse.mli > ._ncdi/graph/src/traverse.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/strat.mli > ._ncdi/graph/src/strat.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/rand.mli > ._ncdi/graph/src/rand.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/oper.mli > ._ncdi/graph/src/oper.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/leaderlist.mli > ._ncdi/graph/src/leaderlist.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/graphviz.mli > ._ncdi/graph/src/graphviz.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/graphml.mli > ._ncdi/graph/src/graphml.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/gml.mli > ._ncdi/graph/src/gml.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/gmap.mli > ._ncdi/graph/src/gmap.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/fixpoint.mli > ._ncdi/graph/src/fixpoint.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/dominator.mli > ._ncdi/graph/src/dominator.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/delaunay.mli > ._ncdi/graph/src/delaunay.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/contraction.mli > ._ncdi/graph/src/contraction.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/classic.mli > ._ncdi/graph/src/classic.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/builder.mli > ._ncdi/graph/src/builder.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/dot_ast.mli > ._ncdi/graph/src/dot_ast.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/sig.mli > ._ncdi/graph/src/sig.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/src/sig_pack.mli > ._ncdi/graph/src/sig_pack.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/lib/unionfind.mli > ._ncdi/graph/lib/unionfind.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/lib/heap.mli > ._ncdi/graph/lib/heap.di
+ocamldep.opt -slash -native -I graph/lib/ -I graph/src/ graph/lib/bitv.mli > ._ncdi/graph/lib/bitv.di
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/lib/bitv.ml
+File "graph/lib/bitv.ml", line 51, characters 15-27:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 68, characters 25-37:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 71, characters 12-24:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 368, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 380, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 392, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 401, characters 10-22:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/bitv.ml", line 464, characters 27-39:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/lib/heap.ml
+File "graph/lib/heap.ml", line 54, characters 13-25:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+File "graph/lib/heap.ml", line 61, characters 16-28:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/lib/unionfind.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/sig_pack.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/sig.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot_ast.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/builder.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/classic.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/contraction.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/delaunay.ml
+File "graph/src/delaunay.ml", line 260, characters 19-31:
+Warning 3: deprecated: Array.create
+Use Array.make instead.
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dominator.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot_parser.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/fixpoint.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/gmap.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/gml.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/graphml.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/graphviz.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/leaderlist.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/oper.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/rand.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/strat.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/traverse.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/util.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/version.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/kruskal.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/flow.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot_lexer.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/components.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/coloring.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/blocks.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/dot.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/imperative.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/merge.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/minsep.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/persistent.ml
+ocamlc.opt -c -I graph/lib/ -I graph/src/ graph/src/nonnegative.mli
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/nonnegative.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/path.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/topological.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/pack.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/mcs_m.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/cliquetree.ml
+ocamlopt.opt -c -I graph/lib/ -I graph/src/ -for-pack Graph graph/src/md.ml
+ocamlopt.opt -pack -o graph.cmx   graph/lib/bitv.cmx graph/lib/heap.cmx graph/lib/unionfind.cmx graph/src/sig_pack.cmx graph/src/sig.cmx graph/src/dot_ast.cmx graph/src/builder.cmx graph/src/classic.cmx graph/src/contraction.cmx graph/src/delaunay.cmx graph/src/dominator.cmx graph/src/dot_parser.cmx graph/src/fixpoint.cmx graph/src/gmap.cmx graph/src/gml.cmx graph/src/graphml.cmx graph/src/graphviz.cmx graph/src/leaderlist.cmx graph/src/oper.cmx graph/src/rand.cmx graph/src/strat.cmx graph/src/traverse.cmx graph/src/util.cmx graph/src/version.cmx graph/src/kruskal.cmx graph/src/flow.cmx graph/src/dot_lexer.cmx graph/src/components.cmx graph/src/coloring.cmx graph/src/blocks.cmx graph/src/dot.cmx graph/src/imperative.cmx graph/src/merge.cmx graph/src/minsep.cmx graph/src/persistent.cmx graph/src/nonnegative.cmx graph/src/path.cmx graph/src/topological.cmx graph/src/pack.cmx graph/src/mcs_m.cmx graph/src/cliquetree.cmx graph/src/md.cmx
+ocamlopt.opt -a    -I graph/lib/ -I graph/src/ -ccopt -pipe -ccopt -Lgraph/lib/ -ccopt -Lgraph/src/ -o graph.cmxa graph.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_cudf SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_parser.mli > ._bcdi/cudf/cudf_parser.di
+ocamlyacc  cudf/cudf_822_parser.mly
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_822_parser.mli > ._bcdi/cudf/cudf_822_parser.di
+ocamlyacc  cudf/cudf_type_parser.mly
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_type_parser.mli > ._bcdi/cudf/cudf_type_parser.di
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_printer.mli > ._bcdi/cudf/cudf_printer.di
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_checker.mli > ._bcdi/cudf/cudf_checker.di
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf.mli > ._bcdi/cudf/cudf.di
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_types_pp.mli > ._bcdi/cudf/cudf_types_pp.di
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_conf.mli > ._bcdi/cudf/cudf_conf.di
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_types.mli > ._bcdi/cudf/cudf_types.di
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_parser.ml > ._d/cudf/cudf_parser.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_822_parser.ml > ._d/cudf/cudf_822_parser.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_type_parser.ml > ._d/cudf/cudf_type_parser.d
+ocamllex.opt  cudf/cudf_822_lexer.mll
+15 states, 361 transitions, table size 1534 bytes
+1541 additional bytes used for bindings
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_822_lexer.ml > ._d/cudf/cudf_822_lexer.d
+ocamllex.opt  cudf/cudf_type_lexer.mll
+39 states, 1690 transitions, table size 6994 bytes
+1269 additional bytes used for bindings
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_type_lexer.ml > ._d/cudf/cudf_type_lexer.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_c.ml > ._d/cudf/cudf_c.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/main_cudf_check.ml > ._d/cudf/main_cudf_check.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_printer.ml > ._d/cudf/cudf_printer.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_checker.ml > ._d/cudf/cudf_checker.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf.ml > ._d/cudf/cudf.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/main_cudf_parse_822.ml > ._d/cudf/main_cudf_parse_822.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_types_pp.ml > ._d/cudf/cudf_types_pp.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_conf.ml > ._d/cudf/cudf_conf.d
+ocamldep.opt -slash -I extlib -I cudf/ cudf/cudf_types.ml > ._d/cudf/cudf_types.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_types.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_types.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_type_parser.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_type_parser.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_type_lexer.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_conf.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_conf.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_822_parser.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_822_parser.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_822_lexer.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_types_pp.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_types_pp.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/main_cudf_parse_822.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_checker.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_checker.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_parser.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_parser.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_printer.mli
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_printer.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/main_cudf_check.ml
+ocamlc.opt -c -I extlib -I cudf/ cudf/cudf_c.ml
+ocamlc.opt -a     -I extlib -I cudf/    -ccopt -pipe -ccopt -Lcudf/     -o cudf.cma cudf/cudf_types.cmo cudf/cudf_type_parser.cmo cudf/cudf_type_lexer.cmo cudf/cudf_conf.cmo cudf/cudf_822_parser.cmo cudf/cudf_822_lexer.cmo cudf/cudf_types_pp.cmo cudf/main_cudf_parse_822.cmo cudf/cudf.cmo cudf/cudf_checker.cmo cudf/cudf_parser.cmo cudf/cudf_printer.cmo cudf/main_cudf_check.cmo cudf/cudf_c.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_parser.mli > ._ncdi/cudf/cudf_parser.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_822_parser.mli > ._ncdi/cudf/cudf_822_parser.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_type_parser.mli > ._ncdi/cudf/cudf_type_parser.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_printer.mli > ._ncdi/cudf/cudf_printer.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_checker.mli > ._ncdi/cudf/cudf_checker.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf.mli > ._ncdi/cudf/cudf.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_types_pp.mli > ._ncdi/cudf/cudf_types_pp.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_conf.mli > ._ncdi/cudf/cudf_conf.di
+ocamldep.opt -slash -native -I extlib -I cudf/ cudf/cudf_types.mli > ._ncdi/cudf/cudf_types.di
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_types.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_type_parser.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_type_lexer.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_conf.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_822_parser.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_822_lexer.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_types_pp.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/main_cudf_parse_822.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_checker.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_parser.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_printer.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/main_cudf_check.ml
+ocamlopt.opt -c -I extlib -I cudf/ cudf/cudf_c.ml
+ocamlopt.opt -a      -I extlib -I cudf/    -ccopt -pipe -ccopt -Lcudf/    -o cudf.cmxa cudf/cudf_types.cmx cudf/cudf_type_parser.cmx cudf/cudf_type_lexer.cmx cudf/cudf_conf.cmx cudf/cudf_822_parser.cmx cudf/cudf_822_lexer.cmx cudf/cudf_types_pp.cmx cudf/main_cudf_parse_822.cmx cudf/cudf.cmx cudf/cudf_checker.cmx cudf/cudf_parser.cmx cudf/cudf_printer.cmx cudf/main_cudf_check.cmx cudf/cudf_c.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_dose_common SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/cudfAdd.mli > ._bcdi/dose/common/cudfAdd.di
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/edosSolver.mli > ._bcdi/dose/common/edosSolver.di
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/input.mli > ._bcdi/dose/common/input.di
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/url.mli > ._bcdi/dose/common/url.di
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/util.mli > ._bcdi/dose/common/util.di
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/cudfDiff.ml > ._d/dose/common/cudfDiff.d
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/cudfAdd.ml > ._d/dose/common/cudfAdd.d
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/cudfSolver.ml > ._d/dose/common/cudfSolver.d
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/edosSolver.ml > ._d/dose/common/edosSolver.d
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/input.ml > ._d/dose/common/input.d
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/url.ml > ._d/dose/common/url.d
+ocamldep.opt -slash -I extlib -I cudf -I re/lib -I dose/common/ dose/common/util.ml > ._d/dose/common/util.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ dose/common/util.mli
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/util.ml
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ dose/common/url.mli
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/url.ml
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ dose/common/input.mli
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/input.ml
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ dose/common/edosSolver.mli
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/edosSolver.ml
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/cudfSolver.ml
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ dose/common/cudfAdd.mli
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/cudfAdd.ml
+ocamlc.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/cudfDiff.ml
+ocamlc.opt -pack -o common.cmo  dose/common/util.cmo dose/common/url.cmo dose/common/input.cmo dose/common/edosSolver.cmo dose/common/cudfSolver.cmo dose/common/cudfAdd.cmo dose/common/cudfDiff.cmo
+ocamlc.opt -a     -I extlib -I cudf -I re/lib -I dose/common/    -ccopt -pipe -ccopt -Ldose/common/     -o dose_common.cma common.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I extlib -I cudf -I re/lib -I dose/common/ dose/common/cudfAdd.mli > ._ncdi/dose/common/cudfAdd.di
+ocamldep.opt -slash -native -I extlib -I cudf -I re/lib -I dose/common/ dose/common/edosSolver.mli > ._ncdi/dose/common/edosSolver.di
+ocamldep.opt -slash -native -I extlib -I cudf -I re/lib -I dose/common/ dose/common/input.mli > ._ncdi/dose/common/input.di
+ocamldep.opt -slash -native -I extlib -I cudf -I re/lib -I dose/common/ dose/common/url.mli > ._ncdi/dose/common/url.di
+ocamldep.opt -slash -native -I extlib -I cudf -I re/lib -I dose/common/ dose/common/util.mli > ._ncdi/dose/common/util.di
+ocamlopt.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/util.ml
+ocamlopt.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/url.ml
+ocamlopt.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/input.ml
+ocamlopt.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/edosSolver.ml
+ocamlopt.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/cudfSolver.ml
+ocamlopt.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/cudfAdd.ml
+ocamlopt.opt -c -I extlib -I cudf -I re/lib -I dose/common/ -for-pack Common dose/common/cudfDiff.ml
+ocamlopt.opt -pack -o common.cmx   dose/common/util.cmx dose/common/url.cmx dose/common/input.cmx dose/common/edosSolver.cmx dose/common/cudfSolver.cmx dose/common/cudfAdd.cmx dose/common/cudfDiff.cmx
+ocamlopt.opt -a    -I extlib -I cudf -I re/lib -I dose/common/ -ccopt -pipe -ccopt -Ldose/common/ -o dose_common.cmxa common.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_dose_debian SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlyacc  dose/deb/packages_parser.mly
+1 rule never reduced
+6 reduce/reduce conflicts.
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/packages_parser.mli > ._bcdi/dose/deb/packages_parser.di
+ocamlyacc  dose/deb/format822_parser.mly
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/format822_parser.mli > ._bcdi/dose/deb/format822_parser.di
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/debcudf.mli > ._bcdi/dose/deb/debcudf.di
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/release.mli > ._bcdi/dose/deb/release.di
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/version.mli > ._bcdi/dose/deb/version.di
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/architecture.mli > ._bcdi/dose/deb/architecture.di
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/packages_parser.ml > ._d/dose/deb/packages_parser.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/format822_parser.ml > ._d/dose/deb/format822_parser.d
+ocamllex.opt  dose/deb/format822_lexer.mll
+83 states, 1213 transitions, table size 5350 bytes
+5282 additional bytes used for bindings
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/format822_lexer.ml > ._d/dose/deb/format822_lexer.d
+ocamllex.opt  dose/deb/packages_lexer.mll
+20 states, 337 transitions, table size 1468 bytes
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/packages_lexer.ml > ._d/dose/deb/packages_lexer.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/edsp.ml > ._d/dose/deb/edsp.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/apt.ml > ._d/dose/deb/apt.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/debcudf.ml > ._d/dose/deb/debcudf.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/debutil.ml > ._d/dose/deb/debutil.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/evolution.ml > ._d/dose/deb/evolution.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/printer.ml > ._d/dose/deb/printer.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/sources.ml > ._d/dose/deb/sources.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/release.ml > ._d/dose/deb/release.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/packages.ml > ._d/dose/deb/packages.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/version.ml > ._d/dose/deb/version.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/format822.ml > ._d/dose/deb/format822.d
+ocamldep.opt -slash -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/architecture.ml > ._d/dose/deb/architecture.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/architecture.mli
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/architecture.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/format822.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/format822_parser.mli
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/format822_parser.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/packages_parser.mli
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/packages_parser.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/version.mli
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/version.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/packages_lexer.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/format822_lexer.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/packages.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/release.mli
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/release.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/sources.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/printer.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/evolution.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/debutil.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/debcudf.mli
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/debcudf.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/apt.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/edsp.ml
+ocamlc.opt -pack -o debian.cmo  dose/deb/architecture.cmo dose/deb/format822.cmo dose/deb/format822_parser.cmo dose/deb/packages_parser.cmo dose/deb/version.cmo dose/deb/packages_lexer.cmo dose/deb/format822_lexer.cmo dose/deb/packages.cmo dose/deb/release.cmo dose/deb/sources.cmo dose/deb/printer.cmo dose/deb/evolution.cmo dose/deb/debutil.cmo dose/deb/debcudf.cmo dose/deb/apt.cmo dose/deb/edsp.cmo
+ocamlc.opt -a     -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/    -ccopt -pipe -ccopt -Ldose/deb/     -o dose_debian.cma debian.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/packages_parser.mli > ._ncdi/dose/deb/packages_parser.di
+ocamldep.opt -slash -native -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/format822_parser.mli > ._ncdi/dose/deb/format822_parser.di
+ocamldep.opt -slash -native -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/debcudf.mli > ._ncdi/dose/deb/debcudf.di
+ocamldep.opt -slash -native -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/release.mli > ._ncdi/dose/deb/release.di
+ocamldep.opt -slash -native -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/version.mli > ._ncdi/dose/deb/version.di
+ocamldep.opt -slash -native -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/architecture.mli > ._ncdi/dose/deb/architecture.di
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/architecture.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/format822.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/format822_parser.mli
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/format822_parser.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/packages_parser.mli
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/packages_parser.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/version.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/packages_lexer.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/format822_lexer.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/packages.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/release.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/sources.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/printer.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/evolution.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/debutil.ml
+ocamlc.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ dose/deb/debcudf.mli
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/debcudf.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/apt.ml
+ocamlopt.opt -c -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -for-pack Debian dose/deb/edsp.ml
+ocamlopt.opt -pack -o debian.cmx   dose/deb/architecture.cmx dose/deb/format822.cmx dose/deb/format822_parser.cmx dose/deb/packages_parser.cmx dose/deb/version.cmx dose/deb/packages_lexer.cmx dose/deb/format822_lexer.cmx dose/deb/packages.cmx dose/deb/release.cmx dose/deb/sources.cmx dose/deb/printer.cmx dose/deb/evolution.cmx dose/deb/debutil.cmx dose/deb/debcudf.cmx dose/deb/apt.cmx dose/deb/edsp.cmx
+ocamlopt.opt -a    -I extlib -I cudf -I dose/common -I re/lib -I dose/deb/ -ccopt -pipe -ccopt -Ldose/deb/ -o dose_debian.cmxa debian.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_dose_algo SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongdeps.mli > ._bcdi/dose/algo/strongdeps.di
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/depsolver.mli > ._bcdi/dose/algo/depsolver.di
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/diagnostic.mli > ._bcdi/dose/algo/diagnostic.di
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongdeps.ml > ._d/dose/algo/strongdeps.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongdeps_int.ml > ._d/dose/algo/strongdeps_int.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongconflicts.ml > ._d/dose/algo/strongconflicts.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongconflicts_int.ml > ._d/dose/algo/strongconflicts_int.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/depsolver.ml > ._d/dose/algo/depsolver.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/depsolver_int.ml > ._d/dose/algo/depsolver_int.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/statistics.ml > ._d/dose/algo/statistics.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/flatten.ml > ._d/dose/algo/flatten.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/dominators.ml > ._d/dose/algo/dominators.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/diagnostic.ml > ._d/dose/algo/diagnostic.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/diagnostic_int.ml > ._d/dose/algo/diagnostic_int.d
+ocamldep.opt -slash -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/defaultgraphs.ml > ._d/dose/algo/defaultgraphs.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/defaultgraphs.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/diagnostic_int.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/diagnostic.mli
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/diagnostic.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/dominators.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/flatten.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/statistics.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/depsolver_int.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/depsolver.mli
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/depsolver.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongconflicts_int.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongconflicts.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongdeps_int.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongdeps.mli
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongdeps.ml
+ocamlc.opt -pack -o algo.cmo  dose/algo/defaultgraphs.cmo dose/algo/diagnostic_int.cmo dose/algo/diagnostic.cmo dose/algo/dominators.cmo dose/algo/flatten.cmo dose/algo/statistics.cmo dose/algo/depsolver_int.cmo dose/algo/depsolver.cmo dose/algo/strongconflicts_int.cmo dose/algo/strongconflicts.cmo dose/algo/strongdeps_int.cmo dose/algo/strongdeps.cmo
+ocamlc.opt -a     -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/    -ccopt -pipe -ccopt -Ldose/algo/     -o dose_algo.cma algo.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongdeps.mli > ._ncdi/dose/algo/strongdeps.di
+ocamldep.opt -slash -native -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/depsolver.mli > ._ncdi/dose/algo/depsolver.di
+ocamldep.opt -slash -native -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/diagnostic.mli > ._ncdi/dose/algo/diagnostic.di
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/defaultgraphs.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/diagnostic_int.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/diagnostic.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/dominators.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/flatten.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/statistics.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/depsolver_int.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/depsolver.mli
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/depsolver.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongconflicts_int.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongconflicts.ml
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongdeps_int.ml
+ocamlc.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ dose/algo/strongdeps.mli
+ocamlopt.opt -c -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -for-pack Algo dose/algo/strongdeps.ml
+ocamlopt.opt -pack -o algo.cmx   dose/algo/defaultgraphs.cmx dose/algo/diagnostic_int.cmx dose/algo/diagnostic.cmx dose/algo/dominators.cmx dose/algo/flatten.cmx dose/algo/statistics.cmx dose/algo/depsolver_int.cmx dose/algo/depsolver.cmx dose/algo/strongconflicts_int.cmx dose/algo/strongconflicts.cmx dose/algo/strongdeps_int.cmx dose/algo/strongdeps.cmx
+ocamlopt.opt -a    -I extlib -I graph/src -I dose/common -I dose/deb -I cudf -I dose/algo/ -ccopt -pipe -ccopt -Ldose/algo/ -o dose_algo.cmxa algo.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_uutf SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I uutf/src/ uutf/src/uutf.mli > ._bcdi/uutf/src/uutf.di
+ocamldep.opt -slash -I uutf/src/ uutf/src/uutf.ml > ._d/uutf/src/uutf.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I uutf/src/ uutf/src/uutf.mli
+ocamlc.opt -c -I uutf/src/ uutf/src/uutf.ml
+File "uutf/src/uutf.ml", line 22, characters 31-48:
+Warning 3: deprecated: String.unsafe_set
+File "uutf/src/uutf.ml", line 68, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 483, characters 18-31:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 487, characters 25-38:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 665, characters 18-31:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 668, characters 8-21:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+ocamlc.opt -a      -I uutf/src/    -ccopt -pipe -ccopt -Luutf/src/     -o uutf.cma uutf/src/uutf.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I uutf/src/ uutf/src/uutf.mli > ._ncdi/uutf/src/uutf.di
+ocamlopt.opt -c -I uutf/src/ uutf/src/uutf.ml
+File "uutf/src/uutf.ml", line 22, characters 31-48:
+Warning 3: deprecated: String.unsafe_set
+File "uutf/src/uutf.ml", line 68, characters 12-25:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 483, characters 18-31:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 487, characters 25-38:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 665, characters 18-31:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "uutf/src/uutf.ml", line 668, characters 8-21:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+ocamlopt.opt -a       -I uutf/src/    -ccopt -pipe -ccopt -Luutf/src/    -o uutf.cmxa uutf/src/uutf.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -f ../OCamlMakefile subproj_jsonm SUBTARGET="bcl ncl" make_deps=yes
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -I uutf/src -I jsonm/src/ jsonm/src/jsonm.mli > ._bcdi/jsonm/src/jsonm.di
+ocamldep.opt -slash -I uutf/src -I jsonm/src/ jsonm/src/jsonm.ml > ._d/jsonm/src/jsonm.d
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamlc.opt -c -I uutf/src -I jsonm/src/ jsonm/src/jsonm.mli
+ocamlc.opt -c -I uutf/src -I jsonm/src/ jsonm/src/jsonm.ml
+File "jsonm/src/jsonm.ml", line 17, characters 31-48:
+Warning 3: deprecated: String.unsafe_set
+File "jsonm/src/jsonm.ml", line 589, characters 18-31:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+ocamlc.opt -a     -I uutf/src -I jsonm/src/    -ccopt -pipe -ccopt -Ljsonm/src/     -o jsonm.cma jsonm/src/jsonm.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+ocamldep.opt -slash -native -I uutf/src -I jsonm/src/ jsonm/src/jsonm.mli > ._ncdi/jsonm/src/jsonm.di
+ocamlopt.opt -c -I uutf/src -I jsonm/src/ jsonm/src/jsonm.ml
+File "jsonm/src/jsonm.ml", line 17, characters 31-48:
+Warning 3: deprecated: String.unsafe_set
+File "jsonm/src/jsonm.ml", line 589, characters 18-31:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+ocamlopt.opt -a      -I uutf/src -I jsonm/src/    -ccopt -pipe -ccopt -Ljsonm/src/    -o jsonm.cmxa jsonm/src/jsonm.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make[2]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+mkdir -p lib
+cp *.cma lib || true
+cp *.cmxa lib || true
+cp *.a lib || true
+cp *.lib lib || true
+cp: cannot stat '*.lib': No such file or directory
+cp extlib/*.cm*i lib
+cp re/lib/*.cm*i lib
+cp cmdliner/src/*.cm*i lib
+cp graph/src/*.cm*i lib
+cp cudf/*.cm*i lib
+cp dose/common/*.cm*i lib
+cp dose/deb/*.cm*i lib
+cp dose/algo/*.cm*i lib
+cp uutf/src/*.cm*i lib
+cp jsonm/src/*.cm*i lib
+cp ./*.cm*i lib
+make[1]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src_ext'
+make -C src opam-lib
+make[1]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+cd .. && ocaml shell/get-git-id.ml src/client/opamGitVersion.ml
+touch client/opamGitVersion.ml
+make ./opam-core.cma ./opam-format.cma ./opam-solver.cma ./opam-repository.cma ./opam-state.cma ./opam-client.cma
+make[2]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+echo "(* THIS FILE IS AUTOMATICALLY GENERATED, EDIT ../Makefile INSTEAD *)" > state/opamScript.ml
+ocaml ../shell/crunch.ml "complete"        < ../shell/opam_completion.sh >> state/opamScript.ml
+ocaml ../shell/crunch.ml "complete_lua"    < ../shell/opam_completion.lua >> state/opamScript.ml
+ocaml ../shell/crunch.ml "complete_zsh"    < ../shell/opam_completion_zsh.sh >> state/opamScript.ml
+ocaml ../shell/crunch.ml "switch_eval"     < ../shell/opam_switch_eval.sh >> state/opamScript.ml
+ocaml ../shell/crunch.ml "switch_eval_cmd" < ../shell/opam_switch_eval.cmd >> state/opamScript.ml
+cp -f core/opamCompat.ml.4.02 core/opamCompat.ml
+cp -f core/opamCompat.mli.4.02 core/opamCompat.mli
+fgrep -A2 "CAMLprim" core/stubs.c | sed -e "s/--/  CAMLreturn(Val_unit);\n}\n/" > core/opamOther.c
+printf "  CAMLreturn(Val_unit);\n}">> core/opamOther.c
+make -f ../OCamlMakefile subprojs SUBPROJS=core SUBTARGET=byte-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamUrl.mli > ._bcdi/core/opamUrl.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamFilename.mli > ._bcdi/core/opamFilename.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamParallel.mli > ._bcdi/core/opamParallel.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamSystem.mli > ._bcdi/core/opamSystem.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamProcess.mli > ._bcdi/core/opamProcess.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersion.mli > ._bcdi/core/opamVersion.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersionCompare.mli > ._bcdi/core/opamVersionCompare.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamConsole.mli > ._bcdi/core/opamConsole.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamStd.mli > ._bcdi/core/opamStd.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCoreConfig.mli > ._bcdi/core/opamCoreConfig.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamJson.mli > ._bcdi/core/opamJson.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCompat.mli > ._bcdi/core/opamCompat.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamUrl.ml > ._d/core/opamUrl.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamFilename.ml > ._d/core/opamFilename.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamParallel.ml > ._d/core/opamParallel.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamSystem.ml > ._d/core/opamSystem.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamProcess.ml > ._d/core/opamProcess.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersion.ml > ._d/core/opamVersion.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersionCompare.ml > ._d/core/opamVersionCompare.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamConsole.ml > ._d/core/opamConsole.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamStd.ml > ._d/core/opamStd.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCoreConfig.ml > ._d/core/opamCoreConfig.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamJson.ml > ._d/core/opamJson.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCompat.ml > ._d/core/opamCompat.d
+ocamlc.opt -c -cc "gcc -O -mms-bitfields -Wall -std=c89" -ccopt " -march=x86-64 -mtune=generic -O2 -pipe \
+			 -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1  \
+			 -Icore/ -I../src_ext/lib -Icore -Iformat -Isolver -Irepository -Istate -Iclient  -o core/opamInject.o " core/opamInject.c
+ocamlc.opt -c -cc "gcc -O -mms-bitfields -Wall -std=c89" -ccopt " -march=x86-64 -mtune=generic -O2 -pipe \
+			 -D_FORTIFY_SOURCE=2 -D__USE_MINGW_ANSI_STDIO=1  \
+			 -Icore/ -I../src_ext/lib -Icore -Iformat -Isolver -Irepository -Istate -Iclient  -o core/opamWindows.o " core/opamWindows.c
+In file included from core/opamWindows.c:31:0:
+core/stubs.c: In function 'OPAMW_SendMessageTimeout':
+core/stubs.c:436:32: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   lResult = SendMessageTimeout((HWND)Int_val(hWnd), rMsg, rwParam, rlParam, Int_val(fuFlags), Int_val(uTimeout), &dwReturnValue);
+                                ^
+core/stubs.c:436:114: warning: passing argument 7 of 'SendMessageTimeoutA' from incompatible pointer type [-Wincompatible-pointer-types]
+   lResult = SendMessageTimeout((HWND)Int_val(hWnd), rMsg, rwParam, rlParam, Int_val(fuFlags), Int_val(uTimeout), &dwReturnValue);
+                                                                                                                  ^
+In file included from C:/Users/y_sasaki/AppData/Local/msys64/mingw64/x86_64-w64-mingw32/include/windows.h:72:0,
+                 from C:/Users/y_sasaki/AppData/Local/msys64/mingw64/x86_64-w64-mingw32/include/rpc.h:16,
+                 from C:/Users/y_sasaki/AppData/Local/msys64/mingw64/x86_64-w64-mingw32/include/wtypes.h:7,
+                 from C:\Users\y_sasaki\AppData\Local\msys64\mingw64\lib\ocaml/caml/unixsupport.h:18,
+                 from core/opamWindows.c:23:
+C:/Users/y_sasaki/AppData/Local/msys64/mingw64/x86_64-w64-mingw32/include/winuser.h:1982:29: note: expected 'PDWORD_PTR {aka long long unsigned int *}' but argument is of type 'DWORD * {aka long unsigned int *}'
+   WINUSERAPI LRESULT WINAPI SendMessageTimeoutA(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lParam,UINT fuFlags,UINT uTimeout,PDWORD_PTR lpdwResult);
+                             ^
+ar rcs libopam-core_stubs.a  core/opamInject.o core/opamWindows.o
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCompat.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCompat.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamJson.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamJson.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCoreConfig.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCoreConfig.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamStd.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamStd.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamConsole.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamConsole.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersionCompare.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersionCompare.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersion.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersion.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamProcess.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamProcess.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamSystem.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamSystem.ml
+File "core/opamSystem.ml", line 558, characters 17-21:
+Warning 27: unused variable arch.
+File "core/opamSystem.ml", line 564, characters 17-21:
+Warning 27: unused variable arch.
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamParallel.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamParallel.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamFilename.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamFilename.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamUrl.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamUrl.ml
+ocamlmklib  -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/  -Lcore/    \
+			-o opam-core_stubs  core/opamInject.o core/opamWindows.o -lgdi32 -luser32  \
+			
+ocamlc.opt -a -cclib -lopam-core_stubs -cclib -lgdi32 -cclib -luser32   -dllib dllopam-core_stubs.dll -custom  -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lcore/     -o opam-core.cma core/opamCompat.cmo core/opamJson.cmo core/opamCoreConfig.cmo core/opamStd.cmo core/opamConsole.cmo core/opamVersionCompare.cmo core/opamVersion.cmo core/opamProcess.cmo core/opamSystem.cmo core/opamParallel.cmo core/opamFilename.cmo core/opamUrl.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=format SUBTARGET=byte-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamllex.opt  format/opamLineLexer.mll
+9 states, 262 transitions, table size 1102 bytes
+ocamllex.opt  format/opamLexer.mll
+74 states, 1462 transitions, table size 6292 bytes
+ocamlyacc  format/opamParser.mly
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamParser.mli > ._bcdi/format/opamParser.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFile.mli > ._bcdi/format/opamFile.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFilter.mli > ._bcdi/format/opamFilter.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormat.mli > ._bcdi/format/opamFormat.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLexer.mli > ._bcdi/format/opamLexer.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypesBase.mli > ._bcdi/format/opamTypesBase.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypes.mli > ._bcdi/format/opamTypes.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamCompiler.mli > ._bcdi/format/opamCompiler.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormula.mli > ._bcdi/format/opamFormula.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamVariable.mli > ._bcdi/format/opamVariable.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamPackage.mli > ._bcdi/format/opamPackage.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamSwitch.mli > ._bcdi/format/opamSwitch.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamRepositoryName.mli > ._bcdi/format/opamRepositoryName.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLineLexer.mli > ._bcdi/format/opamLineLexer.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormatConfig.mli > ._bcdi/format/opamFormatConfig.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamParser.ml > ._d/format/opamParser.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLexer.ml > ._d/format/opamLexer.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLineLexer.ml > ._d/format/opamLineLexer.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFile.ml > ._d/format/opamFile.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFilter.ml > ._d/format/opamFilter.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormat.ml > ._d/format/opamFormat.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypesBase.ml > ._d/format/opamTypesBase.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamCompiler.ml > ._d/format/opamCompiler.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormula.ml > ._d/format/opamFormula.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamVariable.ml > ._d/format/opamVariable.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamPackage.ml > ._d/format/opamPackage.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamSwitch.ml > ._d/format/opamSwitch.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamRepositoryName.ml > ._d/format/opamRepositoryName.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormatConfig.ml > ._d/format/opamFormatConfig.d
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormatConfig.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormatConfig.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLineLexer.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLineLexer.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamRepositoryName.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamRepositoryName.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamSwitch.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamSwitch.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamPackage.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamPackage.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamVariable.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamVariable.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormula.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormula.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamCompiler.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamCompiler.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypes.mli
+File "format/opamTypes.mli", line 403, characters 2-34:
+Warning 50: unattached documentation comment (ignored)
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypesBase.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypesBase.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamParser.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamParser.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLexer.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLexer.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormat.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormat.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFilter.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFilter.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFile.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFile.ml
+ocamlc.opt -a     -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lformat/     -o opam-format.cma format/opamFormatConfig.cmo format/opamLineLexer.cmo format/opamRepositoryName.cmo format/opamSwitch.cmo format/opamPackage.cmo format/opamVariable.cmo format/opamFormula.cmo format/opamCompiler.cmo format/opamTypesBase.cmo format/opamParser.cmo format/opamLexer.cmo format/opamFormat.cmo format/opamFilter.cmo format/opamFile.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=solver SUBTARGET=byte-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolver.mli > ._bcdi/solver/opamSolver.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamHeuristic.mli > ._bcdi/solver/opamHeuristic.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamCudf.mli > ._bcdi/solver/opamCudf.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamActionGraph.mli > ._bcdi/solver/opamActionGraph.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolverConfig.mli > ._bcdi/solver/opamSolverConfig.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolver.ml > ._d/solver/opamSolver.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamHeuristic.ml > ._d/solver/opamHeuristic.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamCudf.ml > ._d/solver/opamCudf.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamActionGraph.ml > ._d/solver/opamActionGraph.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolverConfig.ml > ._d/solver/opamSolverConfig.d
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolverConfig.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolverConfig.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamActionGraph.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamActionGraph.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamCudf.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamCudf.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamHeuristic.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamHeuristic.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolver.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolver.ml
+ocamlc.opt -a -cclib -lgdi32   -custom  -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lsolver/     -o opam-solver.cma solver/opamSolverConfig.cmo solver/opamActionGraph.cmo solver/opamCudf.cmo solver/opamHeuristic.cmo solver/opamSolver.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=repository SUBTARGET=byte-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepository.mli > ._bcdi/repository/opamRepository.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHg.mli > ._bcdi/repository/opamHg.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDarcs.mli > ._bcdi/repository/opamDarcs.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamGit.mli > ._bcdi/repository/opamGit.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamVCS.mli > ._bcdi/repository/opamVCS.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamLocal.mli > ._bcdi/repository/opamLocal.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHTTP.mli > ._bcdi/repository/opamHTTP.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryPath.mli > ._bcdi/repository/opamRepositoryPath.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryBackend.mli > ._bcdi/repository/opamRepositoryBackend.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDownload.mli > ._bcdi/repository/opamDownload.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryConfig.mli > ._bcdi/repository/opamRepositoryConfig.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepository.ml > ._d/repository/opamRepository.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHg.ml > ._d/repository/opamHg.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDarcs.ml > ._d/repository/opamDarcs.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamGit.ml > ._d/repository/opamGit.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamVCS.ml > ._d/repository/opamVCS.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamLocal.ml > ._d/repository/opamLocal.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHTTP.ml > ._d/repository/opamHTTP.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryPath.ml > ._d/repository/opamRepositoryPath.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryBackend.ml > ._d/repository/opamRepositoryBackend.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDownload.ml > ._d/repository/opamDownload.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryConfig.ml > ._d/repository/opamRepositoryConfig.d
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryConfig.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryConfig.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDownload.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDownload.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryBackend.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryBackend.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryPath.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryPath.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHTTP.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHTTP.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamLocal.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamLocal.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamVCS.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamVCS.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamGit.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamGit.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDarcs.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDarcs.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHg.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHg.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepository.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepository.ml
+ocamlc.opt -a     -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lrepository/     -o opam-repository.cma repository/opamRepositoryConfig.cmo repository/opamDownload.cmo repository/opamRepositoryBackend.cmo repository/opamRepositoryPath.cmo repository/opamHTTP.cmo repository/opamLocal.cmo repository/opamVCS.cmo repository/opamGit.cmo repository/opamDarcs.cmo repository/opamHg.cmo repository/opamRepository.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=state SUBTARGET=byte-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamSolution.mli > ._bcdi/state/opamSolution.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamAction.mli > ._bcdi/state/opamAction.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamState.mli > ._bcdi/state/opamState.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamScript.mli > ._bcdi/state/opamScript.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamOCaml.mli > ._bcdi/state/opamOCaml.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamStateConfig.mli > ._bcdi/state/opamStateConfig.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamPath.mli > ._bcdi/state/opamPath.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamSolution.ml > ._d/state/opamSolution.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamAction.ml > ._d/state/opamAction.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamState.ml > ._d/state/opamState.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamScript.ml > ._d/state/opamScript.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamOCaml.ml > ._d/state/opamOCaml.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamStateConfig.ml > ._d/state/opamStateConfig.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamPath.ml > ._d/state/opamPath.d
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamPath.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamPath.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamStateConfig.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamStateConfig.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamOCaml.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamOCaml.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamScript.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamScript.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamState.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamState.ml
+File "state/opamState.ml", line 2268, characters 18-25:
+Warning 27: unused variable comment.
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamAction.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamAction.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamSolution.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamSolution.ml
+File "state/opamSolution.ml", line 685, characters 13-17:
+Warning 27: unused variable arch.
+File "state/opamSolution.ml", line 690, characters 13-17:
+Warning 27: unused variable arch.
+ocamlc.opt -a     -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lstate/     -o opam-state.cma state/opamPath.cmo state/opamStateConfig.cmo state/opamOCaml.cmo state/opamScript.cmo state/opamState.cmo state/opamAction.cmo state/opamSolution.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=client SUBTARGET=byte-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamArg.mli > ._bcdi/client/opamArg.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamGitVersion.mli > ._bcdi/client/opamGitVersion.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClient.mli > ._bcdi/client/opamClient.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamListCommand.mli > ._bcdi/client/opamListCommand.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamPinCommand.mli > ._bcdi/client/opamPinCommand.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamRepositoryCommand.mli > ._bcdi/client/opamRepositoryCommand.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamConfigCommand.mli > ._bcdi/client/opamConfigCommand.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamSwitchCommand.mli > ._bcdi/client/opamSwitchCommand.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClientConfig.mli > ._bcdi/client/opamClientConfig.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamArg.ml > ._d/client/opamArg.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamGitVersion.ml > ._d/client/opamGitVersion.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClient.ml > ._d/client/opamClient.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamListCommand.ml > ._d/client/opamListCommand.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamPinCommand.ml > ._d/client/opamPinCommand.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamRepositoryCommand.ml > ._d/client/opamRepositoryCommand.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamConfigCommand.ml > ._d/client/opamConfigCommand.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamSwitchCommand.ml > ._d/client/opamSwitchCommand.d
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClientConfig.ml > ._d/client/opamClientConfig.d
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClientConfig.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClientConfig.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamSwitchCommand.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamSwitchCommand.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamConfigCommand.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamConfigCommand.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamRepositoryCommand.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamRepositoryCommand.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamPinCommand.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamPinCommand.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamListCommand.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamListCommand.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClient.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClient.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamGitVersion.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamGitVersion.ml
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamArg.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamArg.ml
+ocamlc.opt -a     -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lclient/     -o opam-client.cma client/opamClientConfig.cmo client/opamSwitchCommand.cmo client/opamConfigCommand.cmo client/opamRepositoryCommand.cmo client/opamPinCommand.cmo client/opamListCommand.cmo client/opamClient.cmo client/opamGitVersion.cmo client/opamArg.cmo
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[2]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make ./opam-core.cmxa ./opam-format.cmxa ./opam-solver.cmxa ./opam-repository.cmxa ./opam-state.cmxa ./opam-client.cmxa
+make[2]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=core SUBTARGET=native-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamUrl.mli > ._ncdi/core/opamUrl.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamFilename.mli > ._ncdi/core/opamFilename.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamParallel.mli > ._ncdi/core/opamParallel.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamSystem.mli > ._ncdi/core/opamSystem.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamProcess.mli > ._ncdi/core/opamProcess.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersion.mli > ._ncdi/core/opamVersion.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersionCompare.mli > ._ncdi/core/opamVersionCompare.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamConsole.mli > ._ncdi/core/opamConsole.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamStd.mli > ._ncdi/core/opamStd.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCoreConfig.mli > ._ncdi/core/opamCoreConfig.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamJson.mli > ._ncdi/core/opamJson.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCompat.mli > ._ncdi/core/opamCompat.di
+make[5]: 'libopam-core_stubs.a' is up to date.
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCompat.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamJson.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamCoreConfig.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamStd.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamConsole.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersionCompare.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamVersion.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamProcess.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamSystem.ml
+File "core/opamSystem.ml", line 558, characters 17-21:
+Warning 27: unused variable arch.
+File "core/opamSystem.ml", line 564, characters 17-21:
+Warning 27: unused variable arch.
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamParallel.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamFilename.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/ core/opamUrl.ml
+ocamlopt.opt -a -cclib -lopam-core_stubs -cclib -lgdi32 -cclib -luser32     -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I core/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lcore/    -o opam-core.cmxa core/opamCompat.cmx core/opamJson.cmx core/opamCoreConfig.cmx core/opamStd.cmx core/opamConsole.cmx core/opamVersionCompare.cmx core/opamVersion.cmx core/opamProcess.cmx core/opamSystem.cmx core/opamParallel.cmx core/opamFilename.cmx core/opamUrl.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=format SUBTARGET=native-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamParser.mli > ._ncdi/format/opamParser.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFile.mli > ._ncdi/format/opamFile.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFilter.mli > ._ncdi/format/opamFilter.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormat.mli > ._ncdi/format/opamFormat.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLexer.mli > ._ncdi/format/opamLexer.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypesBase.mli > ._ncdi/format/opamTypesBase.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypes.mli > ._ncdi/format/opamTypes.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamCompiler.mli > ._ncdi/format/opamCompiler.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormula.mli > ._ncdi/format/opamFormula.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamVariable.mli > ._ncdi/format/opamVariable.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamPackage.mli > ._ncdi/format/opamPackage.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamSwitch.mli > ._ncdi/format/opamSwitch.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamRepositoryName.mli > ._ncdi/format/opamRepositoryName.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLineLexer.mli > ._ncdi/format/opamLineLexer.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormatConfig.mli > ._ncdi/format/opamFormatConfig.di
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormatConfig.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLineLexer.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamRepositoryName.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamSwitch.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamPackage.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamVariable.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormula.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamCompiler.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamTypesBase.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamParser.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamLexer.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFormat.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFilter.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/ format/opamFile.ml
+ocamlopt.opt -a      -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I format/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lformat/    -o opam-format.cmxa format/opamFormatConfig.cmx format/opamLineLexer.cmx format/opamRepositoryName.cmx format/opamSwitch.cmx format/opamPackage.cmx format/opamVariable.cmx format/opamFormula.cmx format/opamCompiler.cmx format/opamTypesBase.cmx format/opamParser.cmx format/opamLexer.cmx format/opamFormat.cmx format/opamFilter.cmx format/opamFile.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=solver SUBTARGET=native-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolver.mli > ._ncdi/solver/opamSolver.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamHeuristic.mli > ._ncdi/solver/opamHeuristic.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamCudf.mli > ._ncdi/solver/opamCudf.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamActionGraph.mli > ._ncdi/solver/opamActionGraph.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolverConfig.mli > ._ncdi/solver/opamSolverConfig.di
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolverConfig.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamActionGraph.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamCudf.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamHeuristic.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/ solver/opamSolver.ml
+ocamlopt.opt -a -cclib -lgdi32     -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I solver/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lsolver/    -o opam-solver.cmxa solver/opamSolverConfig.cmx solver/opamActionGraph.cmx solver/opamCudf.cmx solver/opamHeuristic.cmx solver/opamSolver.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=repository SUBTARGET=native-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepository.mli > ._ncdi/repository/opamRepository.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHg.mli > ._ncdi/repository/opamHg.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDarcs.mli > ._ncdi/repository/opamDarcs.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamGit.mli > ._ncdi/repository/opamGit.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamVCS.mli > ._ncdi/repository/opamVCS.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamLocal.mli > ._ncdi/repository/opamLocal.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHTTP.mli > ._ncdi/repository/opamHTTP.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryPath.mli > ._ncdi/repository/opamRepositoryPath.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryBackend.mli > ._ncdi/repository/opamRepositoryBackend.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDownload.mli > ._ncdi/repository/opamDownload.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryConfig.mli > ._ncdi/repository/opamRepositoryConfig.di
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryConfig.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDownload.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryBackend.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepositoryPath.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHTTP.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamLocal.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamVCS.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamGit.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamDarcs.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamHg.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/ repository/opamRepository.ml
+ocamlopt.opt -a      -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I repository/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lrepository/    -o opam-repository.cmxa repository/opamRepositoryConfig.cmx repository/opamDownload.cmx repository/opamRepositoryBackend.cmx repository/opamRepositoryPath.cmx repository/opamHTTP.cmx repository/opamLocal.cmx repository/opamVCS.cmx repository/opamGit.cmx repository/opamDarcs.cmx repository/opamHg.cmx repository/opamRepository.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=state SUBTARGET=native-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamSolution.mli > ._ncdi/state/opamSolution.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamAction.mli > ._ncdi/state/opamAction.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamState.mli > ._ncdi/state/opamState.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamScript.mli > ._ncdi/state/opamScript.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamOCaml.mli > ._ncdi/state/opamOCaml.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamStateConfig.mli > ._ncdi/state/opamStateConfig.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamPath.mli > ._ncdi/state/opamPath.di
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamPath.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamStateConfig.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamOCaml.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamScript.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamState.ml
+File "state/opamState.ml", line 2268, characters 18-25:
+Warning 27: unused variable comment.
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamAction.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/ state/opamSolution.ml
+File "state/opamSolution.ml", line 685, characters 13-17:
+Warning 27: unused variable arch.
+File "state/opamSolution.ml", line 690, characters 13-17:
+Warning 27: unused variable arch.
+ocamlopt.opt -a      -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I state/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lstate/    -o opam-state.cmxa state/opamPath.cmx state/opamStateConfig.cmx state/opamOCaml.cmx state/opamScript.cmx state/opamState.cmx state/opamAction.cmx state/opamSolution.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=client SUBTARGET=native-code-library
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[5]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamArg.mli > ._ncdi/client/opamArg.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamGitVersion.mli > ._ncdi/client/opamGitVersion.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClient.mli > ._ncdi/client/opamClient.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamListCommand.mli > ._ncdi/client/opamListCommand.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamPinCommand.mli > ._ncdi/client/opamPinCommand.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamRepositoryCommand.mli > ._ncdi/client/opamRepositoryCommand.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamConfigCommand.mli > ._ncdi/client/opamConfigCommand.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamSwitchCommand.mli > ._ncdi/client/opamSwitchCommand.di
+ocamldep.opt -slash -native -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClientConfig.mli > ._ncdi/client/opamClientConfig.di
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClientConfig.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamSwitchCommand.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamConfigCommand.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamRepositoryCommand.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamPinCommand.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamListCommand.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamClient.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamGitVersion.ml
+ocamlopt.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/ client/opamArg.ml
+ocamlopt.opt -a      -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I client/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Lclient/    -o opam-client.cmxa client/opamClientConfig.cmx client/opamSwitchCommand.cmx client/opamConfigCommand.cmx client/opamRepositoryCommand.cmx client/opamPinCommand.cmx client/opamListCommand.cmx client/opamClient.cmx client/opamGitVersion.cmx client/opamArg.cmx
+make[5]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[2]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make -f ../OCamlMakefile subprojs SUBPROJS=opam-admin-top SUBTARGET=top
+make[2]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[4]: Entering directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I tools/ tools/opam_admin_top.mli > ._bcdi/tools/opam_admin_top.di
+ocamldep.opt -slash -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I tools/ tools/opam_admin_top.ml > ._d/tools/opam_admin_top.d
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I tools/ tools/opam_admin_top.mli
+ocamlc.opt -c -g -w +a-4-44-48 -bin-annot -short-paths -safe-string -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I tools/ tools/opam_admin_top.ml
+ocamlmktop \
+			  \
+			    -I ../src_ext/lib -I core -I format -I solver -I repository -I state -I client -I tools/  -g -w +a-4-44-48 -bin-annot -safe-string  -ccopt -pipe -ccopt -Ltools/    unix.cma extlib.cma re.cma cmdliner.cma graph.cma cudf.cma dose_common.cma dose_algo.cma uutf.cma jsonm.cma ./opam-core.cma ./opam-format.cma ./opam-solver.cma ./opam-repository.cma ./opam-state.cma ./opam-client.cma -o opam-admin.top.exe \
+			tools/opam_admin_top.cmo
+flexlink: unknown option '-pipe'.
+FlexDLL version 0.34
+
+Usage:
+  flexlink -o <result.dll/exe> file1.obj file2.obj ... -- <extra linker arguments>
+
+  -o                  Choose the name of the output file
+  -exe                Link the main program as an exe file
+  -maindll            Link the main program as a dll file
+  -noflexdllobj       Do not add the Flexdll runtime object (for exe)
+  -noentry            Do not use the Flexdll entry point (for dll)
+  -noexport           Do not export any symbol
+  -norelrelocs        Ensure that no relative relocation is generated
+  -base               Specify base address (Win64 only)
+  -I <dir>            Add a directory where to search for files
+  -L <dir>            Add a directory where to search for files
+  -l <lib>            Library file
+  -chain {msvc|msvc64|cygwin|cygwin64|mingw|mingw64|gnat|ld}
+                      Choose which linker to use
+  -x64                (Deprecated)
+  -defaultlib <obj>   External object (no export, no import)
+  -save-temps         Do not delete intermediate files
+  -implib             Do not delete the generated import library
+  -outdef             Produce a def file with exported symbols
+  -v                  Increment verbosity (can be repeated)
+  -show-exports       Show exported symbols
+  -show-imports       Show imported symbols
+  -dry                Show the linker command line, do not actually run it
+  -dump               Only dump the content of object files
+  -patch              Only patch the target image (to be used with -stack)
+  -nocygpath          Do not use cygpath (default for msvc, mingw)
+  -cygpath            Use cygpath (default for cygwin)
+  -no-merge-manifest  Do not merge the manifest (takes precedence over -merge-manifest)
+  -merge-manifest     Merge manifest to the dll or exe (if generated)
+  -real-manifest      Use the generated manifest (default behavior)
+  -default-manifest   Use the default manifest (default.manifest/default_amd64.manifest)
+  -export <sym>       Explicitly export a symbol
+  -noreexport         Do not reexport symbols imported from import libraries
+  -where              Show the FlexDLL directory
+  -nounderscore       Normal symbols are not prefixed with an underscore
+  -nodefaultlibs      Do not assume any default library
+  -builtin            Use built-in linker to produce a dll
+  -explain            Explain why library objects are linked
+  -subsystem <id>     Set the subsystem (default: console)
+  -custom-crt         Use a custom CRT
+  -stack <int>        Set the stack reserve in the resulting image
+  -link <option>      Next argument is passed verbatim to the linker
+  -D <symbol>         (Ignored)
+  -U <symbol>         (Ignored)
+  --                  Following arguments are passed verbatim to the linker
+  -help               Display this list of options
+  --help              Display this list of options
+
+Notes:
+* The -I, -l and -L options do not need to be separated from their argument.
+* An option like /linkXXX is an abbrevation for '-link XXX'.
+* FlexDLL's object files are searched by default in the same directory as
+  flexlink, or in the directory given by the environment variable FLEXDIR
+  if it is defined.
+* Extra argument can be passed in the environment variable FLEXLINKFLAGS.
+
+Homepage: http://alain.frisch.fr/flexdll.html
+File "_none_", line 1:
+Error: Error while building custom runtime system
+make[4]: *** [../OCamlMakefile:943: opam-admin.top] Error 2
+make[4]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[3]: *** [../OCamlMakefile:748: top] Error 2
+make[3]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[2]: *** [../OCamlMakefile:1199: subproj_opam-admin-top] Error 2
+make[2]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make[1]: *** [Makefile:330: opam-admin.top] Error 2
+make[1]: Leaving directory '/home/y_sasaki/work/msys2-devtools/mingw-w64-opam/src/opam/src'
+make: *** [Makefile:34: opam-lib] Error 2
+==> ERROR: A failure occurred in build().
+    Aborting...
