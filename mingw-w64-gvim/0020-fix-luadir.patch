@@ -1,0 +1,31 @@
+diff --git a/src/Make_cyg_ming.mak b/src/Make_cyg_ming.mak
+index a6edef6..2b97505 100644
+--- a/src/Make_cyg_ming.mak
++++ b/src/Make_cyg_ming.mak
+@@ -198,8 +198,16 @@ ifndef LUA_VER
+ LUA_VER=51
+ endif
+ 
++ifndef LUA_INCDIR
++LUA_INCDIR=$(LUA)/include
++endif
++
++ifndef LUA_LIBDIR
++LUA_LIBDIR=$(LUA)/lib
++endif
++
+ ifeq (no,$(DYNAMIC_LUA))
+-LUA_LIB = -L$(LUA)/lib -llua
++LUA_LIB = -L$(LUA_LIBDIR) -llua
+ endif
+ 
+ endif
+@@ -458,7 +466,7 @@ endif
+ endif
+ 
+ ifdef LUA
+-CFLAGS += -I$(LUA)/include -I$(LUA) -DFEAT_LUA
++CFLAGS += -I$(LUA_INCDIR) -I$(LUA) -DFEAT_LUA
+ ifeq (yes, $(DYNAMIC_LUA))
+ CFLAGS += -DDYNAMIC_LUA -DDYNAMIC_LUA_DLL=\"lua$(LUA_VER).dll\"
+ endif
