@@ -4,6 +4,7 @@ pkgname=vim
 _topver=7.4
 _patchlevel=1721
 _versiondir="${pkgname}${_topver//./}"
+_luaver=5.3.3
 pkgver=${_topver}.${_patchlevel}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -11,8 +12,9 @@ license=('custom:vim')
 url="http://www.vim.org"
 depends=('ncurses')
 groups=('editors')
-makedepends=('gawk' 'perl' 'python2' 'python3' 'ruby' 'libiconv' 'ncurses-devel' 'libcrypt-devel' 'lua')
+makedepends=('gawk' 'perl' 'python2' 'python3' 'ruby' 'libiconv' 'ncurses-devel' 'libcrypt-devel')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/vim/vim/archive/v${pkgver}.tar.gz
+        http://www.lua.org/ftp/lua-${_luaver}.tar.gz
         'dot.vimrc'
         '7.3-cygwin-mouse.patch'
         '7.3-virc.patch'
@@ -21,6 +23,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/vim/vim/archive/v${pkgve
         'accept-crlf.patch'
         'vim-completion')
 sha256sums=('fb0cbb2eb2523a2f13347da85523ac1734944c08b30124002b23ff6f7b0b0015'
+            'SKIP'
             'edd18e0756406ee7b659e4552e444c50c3a0c1e9fb4fce2ddd770c933ea6c7f5'
             'bca6e030d50c0d2468ab5c78aa0b359eb18a88a197de8406c593458ffedde922'
             '44d7738a8f801195898eeef766ff77506c717dd5d19145ade3c1c2349d4bc4fd'
@@ -46,6 +49,12 @@ prepare() {
 }
 
 build() {
+  # build Lua
+  cd ${srcdir}/lua-${_luaver}
+  
+  make posix -j1
+  make INSTALL_TOP="${srcdir}/lua-${_luaver}" install -j1
+
   cd ${srcdir}/${pkgname}-${pkgver}
 
   ./configure \
@@ -56,6 +65,7 @@ build() {
     --enable-cscope \
     --enable-multibyte \
     --enable-luainterp \
+    --with-lua-prefix="$srcdir/lua-${_luaver}" \
     --enable-perlinterp=dynamic \
     --enable-pythoninterp=dynamic \
     --disable-python3interp \
