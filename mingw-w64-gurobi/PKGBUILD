@@ -13,6 +13,7 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-tools-git")
 depends=("${MINGW_PACKAGE_PREFIX}-gcc-libs")
 source=('Makefile')
 sha256sums=('SKIP')
+
 _verno=${pkgver//\./}
 
 prepare() {
@@ -21,7 +22,7 @@ prepare() {
     echo "\$GUROBI_HOME is not set."
     return 1
   fi
-  verno=$(basename $(realpath `cygpath -u $GUROBI_HOME`/..) | sed 's/gurobi//')
+  verno=$(basename $(dirname `cygpath $GUROBI_HOME`) | sed 's/gurobi//')
   if ! [[ $verno = ${_verno} ]]; then
     echo "Gurobi version mismatch"
     return 1
@@ -30,8 +31,8 @@ prepare() {
   cd ${srcdir}
 
   # copy the dependencies from working directory (be careful).
-  cp -r $(cygpath -u $GUROBI_HOME)/src/cpp ${srcdir}/src
-  cp $(cygpath -u $GUROBI_HOME)/include/gurobi_{c,c++}.h ${srcdir}/src
+  cp -r $(cygpath $GUROBI_HOME)/src/cpp ${srcdir}/src
+  cp    $(cygpath $GUROBI_HOME)/include/gurobi_{c,c++}.h ${srcdir}/src
 
   # generate def file.
   gendef $(cygpath $GUROBI_HOME)/bin/gurobi65.dll
@@ -48,12 +49,22 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}${MINGW_PREFIX}/{include,lib}
+  cd $srcdir
+  
+  mkdir -p ${pkgdir}${MINGW_PREFIX}/{include,etc/profile.d,lib}
 
   cp $(cygpath $GUROBI_HOME)/include/gurobi_c.h "${pkgdir}${MINGW_PREFIX}"/include/
   cp $(cygpath $GUROBI_HOME)/include/gurobi_c++.h "${pkgdir}${MINGW_PREFIX}"/include/
   cp $srcdir/libgurobi${_verno/%?/}.dll.a "${pkgdir}${MINGW_PREFIX}"/lib/
   cp $srcdir/libgurobi_c++.a "${pkgdir}${MINGW_PREFIX}"/lib/
+
+  for ext in sh zsh; do
+    cat > ${pkgdir}${MINGW_PREFIX}/etc/profile.d/gurobi.$ext << 'EOF'
+if [[ "x$GUROBI_HOME" != "x" ]]; then
+  export PATH=$PATH:$(cygpath $GUROBI_HOME/bin)
+fi
+EOF
+  done
 }
 
 # vim: set ft=sh ts=2 sw=2 et :
