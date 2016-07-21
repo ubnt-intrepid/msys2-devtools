@@ -1,0 +1,56 @@
+# Maintainer: Yusuke Sasaki <yusuke.sasaki.nuem@gmail.com>
+
+_realname=neovim-qt
+pkgbase="mingw-w64-${_realname}-git"
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}-git"
+provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+replaces=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=332.adc7a2d
+pkgrel=1
+pkgdesc="Neovim client library and GUI, in Qt5 (mingw-w64)"
+arch=('any')
+url="http://github.com/equalsraf/neovim-qt"
+license=("ISC")
+depends=("${MINGW_PACKAGE_PREFIX}-qt5"
+         "${MINGW_PACKAGE_PREFIX}-msgpack-c")
+makedepends=("${MINGW_PACKAGE_PREFIX}-cmake")
+options=('strip')
+source=("${_realname}"::"git+https://github.com/equalsraf/neovim-qt.git#branch=master"
+        '0010-disable-windeployqt.patch')
+sha256sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_realname}"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/${_realname}"
+  patch -p1 -i $srcdir/0010-disable-windeployqt.patch
+}
+
+build() {
+  [[ -d "${srcdir}"/build-${CARCH} ]] && rm -rf "${srcdir}"/build-${CARCH}
+  mkdir -p "${srcdir}"/build-${CARCH} && cd "${srcdir}"/build-${CARCH}
+
+  MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
+    ${MINGW_PREFIX}/bin/cmake \
+      -G'MSYS Makefiles' \
+      -DCMAKE_INSTALL_PREFIX=${MINGW_PREFIX} \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DUSE_SYSTEM_MSGPACK=ON \
+      ../${_realname}
+
+  make
+}
+
+check() {
+  cd "${srcdir}"/build-${CARCH}
+  make test
+}
+
+package() {
+  cd "${srcdir}"/build-${CARCH}
+  make DESTDIR=${pkgdir} install
+}
