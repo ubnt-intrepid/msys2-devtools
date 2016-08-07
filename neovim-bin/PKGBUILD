@@ -1,0 +1,22 @@
+pkgname=neovim-bin
+pkgver=0.1.5
+pkgrel=1
+arch=('i686' 'x86_64')
+license=('custom:vim')
+url="http://www.vim.org"
+depends=('ncurses')
+groups=('editors')
+makedepends=()
+source=("https://ci.appveyor.com/api/buildjobs/3h1fku16u6ljwttp/artifacts/build/Neovim.zip" # build992, MINGW64
+        # "https://ci.appveyor.com/api/buildjobs/o7qnv1aw5whn5tlu/artifacts/build/Neovim.zip" # build932, MSVC
+        "nvim-server")
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+  mkdir -p $pkgdir/opt/neovim
+  mv $srcdir/Neovim/* $pkgdir/opt/neovim
+
+  mkdir -p $pkgdir/usr/local/bin
+  cp $srcdir/nvim-server $pkgdir/usr/local/bin/
+}

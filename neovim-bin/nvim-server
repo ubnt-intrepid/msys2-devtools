@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export NVIM_LISTEN_ADDRESS=${NVIM_LISTEN_ADDRESS:-"127.0.0.1:7777"}
+export VIMRUNTIME=$(cygpath -w /opt/neovim/share/nvim/runtime)
+
+winpty /opt/neovim/bin/nvim.exe "$@"
