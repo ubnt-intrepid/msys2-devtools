@@ -23,10 +23,12 @@ optdepends=("${MINGW_PACKAGE_PREFIX}-luajit-git: Lua language support"
              "${MINGW_PACKAGE_PREFIX}-tcl: Tcl language support")
 source=("${_realname}"::"git+https://github.com/vim/vim.git#tag=v$pkgver"
         "kaoriya-patch"::"git+https://github.com/koron/vim-kaoriya-patches.git#branch=master"
+        "gvim.sh"
         0010-change-runtimepath.patch
         0020-fix-luadir.patch
         0030-add-perl-lib.patch)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'e528868709ede398835d24d46d3eed940e5aaa741134770a110d5ed245f8df30'
             'a0991aa44cd7d2b7671ea0ee5cb3f818469b6bc6bfe03fa9efd554e5a76c644a'
@@ -98,14 +100,13 @@ package() {
 
   # executable binaries 
   cp src/{gvim.exe,vimrun.exe,xxd/xxd.exe} "${pkgdir}${MINGW_PREFIX}"/bin/
+  mv ${pkgdir}${MINGW_PREFIX}/bin/gvim{,_}.exe
 
   # runtime and license file
   cp -r runtime "${pkgdir}${MINGW_PREFIX}"/share/vim/vim74
   cp "${pkgdir}${MINGW_PREFIX}"/share/{vim/vim74/doc/uganda.txt,licenses/vim/license.txt}
 
-  # profile script
-  for ext in sh zsh; do
-    echo "export VIMRUNTIME=${MINGW_PREFIX}/share/vim/vim74" > "${pkgdir}${MINGW_PREFIX}"/etc/profile.d/gvim.$ext
-  done
+  cp $srcdir/gvim.sh ${pkgdir}${MINGW_PREFIX}/bin/gvim
+  mv ${pkgdir}${MINGW_PREFIX}/bin/gvim{_,}.exe
 }
 

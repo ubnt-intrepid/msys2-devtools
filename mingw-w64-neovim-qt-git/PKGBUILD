@@ -5,7 +5,7 @@ pkgbase="mingw-w64-${_realname}-git"
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}-git"
 provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 replaces=("${MINGW_PACKAGE_PREFIX}-${_realname}")
-pkgver=332.adc7a2d
+pkgver=361.4122d6b
 pkgrel=1
 pkgdesc="Neovim client library and GUI, in Qt5 (mingw-w64)"
 arch=('any')
@@ -16,8 +16,11 @@ depends=("${MINGW_PACKAGE_PREFIX}-qt5"
 makedepends=("${MINGW_PACKAGE_PREFIX}-cmake")
 options=('strip')
 source=("${_realname}"::"git+https://github.com/equalsraf/neovim-qt.git#branch=master"
-        '0010-disable-windeployqt.patch')
+        '0010-disable-windeployqt.patch'
+        '0020-remove-mock-include.patch')
+
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -28,6 +31,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_realname}"
   patch -p1 -i $srcdir/0010-disable-windeployqt.patch
+  patch -p1 -i $srcdir/0020-remove-mock-include.patch
 }
 
 build() {
