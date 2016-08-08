@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export NVIM_LISTEN_ADDRESS=${NVIM_LISTEN_ADDRESS:-"127.0.0.1:7777"}
+exec /opt/neovim-qt/bin/nvim-qt.exe --server ${NVIM_LISTEN_ADDRESS} "$@"

@@ -9,14 +9,27 @@ groups=('editors')
 makedepends=()
 source=("https://ci.appveyor.com/api/buildjobs/3h1fku16u6ljwttp/artifacts/build/Neovim.zip" # build992, MINGW64
         # "https://ci.appveyor.com/api/buildjobs/o7qnv1aw5whn5tlu/artifacts/build/Neovim.zip" # build932, MSVC
-        "nvim-server")
+        "https://github.com/equalsraf/neovim-qt/releases/download/staging/neovim-qt.zip"
+        "nvim-server"
+        "nvim-client")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
+noextract=('neovim-qt.zip')
+
+prepare() {
+  unzip -d $srcdir/neovim-qt neovim-qt.zip
+}
 
 package() {
-  mkdir -p $pkgdir/opt/neovim
-  mv $srcdir/Neovim/* $pkgdir/opt/neovim
+  mkdir -p $pkgdir/opt/neovim{,-qt}
+
+  cp -r $srcdir/Neovim/* $pkgdir/opt/neovim/
+  cp -r $srcdir/neovim-qt/* $pkgdir/opt/neovim-qt/
+  cp -r $srcdir/neovim-qt/share/nvim-qt/runtime/* $pkgdir/opt/neovim/share/nvim/runtime/
 
   mkdir -p $pkgdir/usr/local/bin
   cp $srcdir/nvim-server $pkgdir/usr/local/bin/
+  cp $srcdir/nvim-client $pkgdir/usr/local/bin/
 }
