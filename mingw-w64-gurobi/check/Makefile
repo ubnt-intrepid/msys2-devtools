@@ -1,5 +1,5 @@
-SRCS 			:= $(wildcard *.cpp)
-OBJS 			:= $(SRCS:.cpp=.o)
+SRCS			:= $(wildcard *.cpp)
+OBJS			:= $(SRCS:.cpp=.o)
 TARGETS		:= example
 
 CXXFLAGS	:= -std=c++14 -march=x86-64 -Wall -Wextra -O2

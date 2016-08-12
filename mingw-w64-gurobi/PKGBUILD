@@ -13,8 +13,11 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-tools-git")
 depends=("${MINGW_PACKAGE_PREFIX}-gcc-libs")
 source=('Makefile')
 sha256sums=('SKIP')
+options=('!strip' 'staticlibs')
 
 _verno=${pkgver//\./}
+_mverno=${_verno/%?/}
+_gurobi_home="$(cygpath $GUROBI_HOME)"
 
 prepare() {
   # check Gurobi installation
@@ -28,43 +31,38 @@ prepare() {
     return 1
   fi 
 
-  cd ${srcdir}
-
   # copy the dependencies from working directory (be careful).
-  cp -r $(cygpath $GUROBI_HOME)/src/cpp ${srcdir}/src
-  cp    $(cygpath $GUROBI_HOME)/include/gurobi_{c,c++}.h ${srcdir}/src
+  cp -r "${_gurobi_home}"/src/cpp                  ${srcdir}/src
+  cp    "${_gurobi_home}"/include/gurobi_{c,c++}.h ${srcdir}/src
 
   # generate def file.
-  gendef $(cygpath $GUROBI_HOME)/bin/gurobi65.dll
+  gendef - "${_gurobi_home}"/bin/gurobi${_mverno}.dll \
+    > ${srcdir}/gurobi${_mverno}.def
 
   mv Makefile src/
 }
 
 build() {
-  cd $srcdir
-  dlltool --dllname gurobi65.dll --def gurobi65.def --output-lib libgurobi65.dll.a
+  cd ${srcdir}
+  dlltool --dllname gurobi${_mverno}.dll \
+          --def gurobi${_mverno}.def \
+          --output-lib libgurobi${_mverno}.dll.a
 
-  cd src/
+  cd ${srcdir}/src
   make
 }
 
 package() {
-  cd $srcdir
-  
-  mkdir -p ${pkgdir}${MINGW_PREFIX}/{include,etc/profile.d,lib}
+  cd ${srcdir}
 
-  cp $(cygpath $GUROBI_HOME)/include/gurobi_c.h "${pkgdir}${MINGW_PREFIX}"/include/
-  cp $(cygpath $GUROBI_HOME)/include/gurobi_c++.h "${pkgdir}${MINGW_PREFIX}"/include/
-  cp $srcdir/libgurobi${_verno/%?/}.dll.a "${pkgdir}${MINGW_PREFIX}"/lib/
-  cp $srcdir/libgurobi_c++.a "${pkgdir}${MINGW_PREFIX}"/lib/
+  local _prefix="${pkgdir}${MINGW_PREFIX}"
 
-  for ext in sh zsh; do
-    cat > ${pkgdir}${MINGW_PREFIX}/etc/profile.d/gurobi.$ext << 'EOF'
-if [[ "x$GUROBI_HOME" != "x" ]]; then
-  export PATH=$PATH:$(cygpath $GUROBI_HOME/bin)
-fi
-EOF
-  done
+  mkdir -p ${_prefix}/{bin,include,lib}
+
+  cp ${_gurobi_home}/bin/{gurobi,aes}${_mverno}.dll "${_prefix}/bin/"
+  cp ${_gurobi_home}/include/gurobi_{c,c++}.h       "${_prefix}/include/"
+  cp $srcdir/libgurobi${_mverno}.dll.a              "${_prefix}/lib/"
+  cp $srcdir/libgurobi_c++.a                        "${_prefix}/lib/"
 }
 
 # vim: set ft=sh ts=2 sw=2 et :
