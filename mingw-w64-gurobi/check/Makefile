@@ -3,7 +3,7 @@ OBJS			:= $(SRCS:.cpp=.o)
 TARGETS		:= example
 
 CXXFLAGS	:= -std=c++14 -march=x86-64 -Wall -Wextra -O2
-LIB				:= -lgurobi_c++ -lgurobi65
+LIB				:= -lgurobi_c++ -lgurobi65 -lboost_filesystem-mt -lboost_system-mt
 
 all: $(TARGETS) 
 
