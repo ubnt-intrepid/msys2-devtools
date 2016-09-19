@@ -1,9 +1,9 @@
 diff --git a/src/Make_cyg_ming.mak b/src/Make_cyg_ming.mak
-index a6edef6..2b97505 100644
+index 63f7fa9..5288959 100644
 --- a/src/Make_cyg_ming.mak
 +++ b/src/Make_cyg_ming.mak
 @@ -198,8 +198,16 @@ ifndef LUA_VER
- LUA_VER=51
+ LUA_VER=53
  endif
  
 +ifndef LUA_INCDIR
@@ -20,7 +20,7 @@ index a6edef6..2b97505 100644
  endif
  
  endif
-@@ -458,7 +466,7 @@ endif
+@@ -461,7 +469,7 @@ endif
  endif
  
  ifdef LUA

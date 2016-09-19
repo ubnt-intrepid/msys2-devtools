@@ -1,8 +1,8 @@
 diff --git a/src/Make_cyg_ming.mak b/src/Make_cyg_ming.mak
-index a6edef6..b0ea6d2 100644
+index 5288959..e37882e 100644
 --- a/src/Make_cyg_ming.mak
 +++ b/src/Make_cyg_ming.mak
-@@ -825,7 +825,7 @@ uninstal.exe: uninstal.c
+@@ -837,7 +837,7 @@ uninstal.exe: uninstal.c
  	$(CC) $(CFLAGS) -o uninstal.exe uninstal.c $(LIB)
  
  $(TARGET): $(OUTDIR) $(OBJ)
