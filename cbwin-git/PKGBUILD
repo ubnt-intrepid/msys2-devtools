@@ -1,0 +1,56 @@
+# Maintainer: Yusuke Sasaki <yusuke.sasaki.nuem@gmail.com>
+
+_realname=cbwin
+pkgbase="mingw-w64-${_realname}-git"
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}-git"
+provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+replaces=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=124.211c6f2
+pkgrel=1
+pkgdesc="Neovim client library and GUI, in Qt5 (mingw-w64)"
+arch=('any')
+url="http://github.com/xilun/cbwin"
+license=("MIT")
+depends=()
+makedepends=("${MINGW_PACKAGE_PREFIX}-cmake")
+source=("${_realname}"::"git+https://github.com/xilun/cbwin.git#branch=master")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_realname}"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+# prepare() {
+#   cd "$srcdir/${_realname}"
+#   patch -p1 -i $srcdir/0010-disable-windeployqt.patch
+#   patch -p1 -i $srcdir/0020-remove-mock-include.patch
+# }
+
+bow_run() {
+  /usr/bin/winpty.exe /c/Windows/System32/bash.exe -c "$*"
+}
+
+build() {
+  [[ -d "${srcdir}"/build-${CARCH} ]] && rm -rf "${srcdir}"/build-${CARCH}
+  mkdir -p "${srcdir}"/build-${CARCH} && cd "${srcdir}"/build-${CARCH}
+
+  MSYS2_ARG_CONV_EXCL="-DCMAKE_INSTALL_PREFIX=" \
+    ${MINGW_PREFIX}/bin/cmake \
+      -G "Visual Studio 14 2015 Win64" \
+      -DCMAKE_INSTALL_PREFIX=${MINGW_PREFIX} \
+      -DCMAKE_BUILD_TYPE=Release \
+      ../${_realname}/outbash
+  ${MINGW_PREFIX}/bin/cmake --build . --config Release --clean-first
+
+  # build backend at BoW
+  srcdir_wsl='/mnt/'$(cygpath -m $srcdir | sed -e 's!^\([A-Z]\):!\L\1!')
+  bow_run "cd $srcdir_wsl/$pkgname-$pkgver/backend && make"
+}
+
+package() {
+  cd "${srcdir}"/build-${CARCH}
+
+  mkdir -p ${pkgdir}${MINGW_PREFIX}/bin
+  cp Release/outbash.exe ${pkgdir}${MINGW_PREFIX}/bin/
+}
