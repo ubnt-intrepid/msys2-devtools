@@ -1,0 +1,13 @@
+--- a/frontend/wslbridge.cc	2016-09-20 04:41:01.194501700 +0900
++++ b/frontend/wslbridge.cc	2016-09-20 04:42:12.588512400 +0900
+@@ -823,7 +823,9 @@
+     std::wstring cmdLine;
+     cmdLine.append(L"\"");
+     cmdLine.append(bashPath);
+-    cmdLine.append(L"\" -c ");
++    cmdLine.append(L"\" ~");
++    cmdLine.append(L" -c");
++    cmdLine.append(L" ");
+     appendBashArg(cmdLine, bashCmdLine);
+ 
+     STARTUPINFOW sui = {};

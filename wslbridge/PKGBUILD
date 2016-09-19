@@ -4,11 +4,18 @@ pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/rprichard/wslbridge"
-source=("https://github.com/rprichard/wslbridge/archive/0.1.0.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/rprichard/wslbridge/archive/0.1.0.tar.gz"
+        0010-fix-homedir.patch)
+sha256sums=('SKIP' SKIP)
 
 bow_run() {
   /usr/bin/winpty.exe /c/Windows/System32/bash.exe -c "$*"
+}
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+
+  patch -p1 -i $srcdir/0010-fix-homedir.patch
 }
 
 build() {
