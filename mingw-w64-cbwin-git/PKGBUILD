@@ -5,9 +5,9 @@ pkgbase="mingw-w64-${_realname}-git"
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}-git"
 provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 replaces=("${MINGW_PACKAGE_PREFIX}-${_realname}")
-pkgver=124.211c6f2
+pkgver=127.2504a54
 pkgrel=1
-pkgdesc="Neovim client library and GUI, in Qt5 (mingw-w64)"
+pkgdesc="Launch Windows programs from \"Bash on Ubuntu on Windows\" (WSL)"
 arch=('any')
 url="http://github.com/xilun/cbwin"
 license=("MIT")
@@ -44,8 +44,8 @@ build() {
   ${MINGW_PREFIX}/bin/cmake --build . --config Release --clean-first
 
   # build backend at BoW
-  srcdir_wsl='/mnt/'$(cygpath -m $srcdir | sed -e 's!^\([A-Z]\):!\L\1!')
-  bow_run "cd $srcdir_wsl/$pkgname-$pkgver/backend && make"
+  srcdir_wsl='/mnt/'$(cygpath -m $srcdir/${_realname}/caller | sed -e 's!^\([A-Z]\):!\L\1!')
+  bow_run "cd $srcdir_wsl && ./build.sh"
 }
 
 package() {
@@ -53,4 +53,7 @@ package() {
 
   mkdir -p ${pkgdir}${MINGW_PREFIX}/bin
   cp Release/outbash.exe ${pkgdir}${MINGW_PREFIX}/bin/
+
+  mkdir -p ${pkgdir}${MINGW_PREFIX}/share/cbwin/caller
+  cp ${srcdir}/cbwin/caller/{wrun,wstart,wcmd,install.sh} ${pkgdir}${MINGW_PREFIX}/share/cbwin/caller/
 }
