@@ -1,0 +1,24 @@
+pkgname=fzy
+pkgver=0.7
+pkgrel=1
+arch=('i686' 'x86_64')
+license=('MIT')
+url="https://github.com/jhawthorn/fzy"
+source=("https://github.com/jhawthorn/fzy/archive/0.7.tar.gz")
+sha256sums=('SKIP')
+
+# prepare() {
+#   cd $srcdir/$pkgname-$pkgver
+#   patch -p1 -i $srcdir/0010-fix-homedir.patch
+# }
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+
+  make PREFIX=/usr
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+}
