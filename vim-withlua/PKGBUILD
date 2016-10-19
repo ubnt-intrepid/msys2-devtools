@@ -2,7 +2,7 @@
 
 pkgname=vim
 _topver=8.0
-_patchlevel=0027
+_patchlevel=0045
 _versiondir="${pkgname}${_topver//./}"
 _luaver=5.3.3
 pkgver=${_topver}.${_patchlevel}
@@ -22,7 +22,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/vim/vim/archive/v${pkgve
         'pretend-cygwin-msys.patch'
         'accept-crlf.patch'
         'vim-completion')
-sha256sums=('b76593fd63ce3e2ae2e06eb5eb49cc8c35818ae5497b683ab4dbf839fe27a923'
+sha256sums=('31cf8e56f1af025ba7ad597c89bcd9d9c1d5bf1c5414c11792a7f7f5fdb1787e'
             '5113c06884f7de453ce57702abaac1d618307f33f6789fa870e87a59d772aca2'
             'edd18e0756406ee7b659e4552e444c50c3a0c1e9fb4fce2ddd770c933ea6c7f5'
             'bca6e030d50c0d2468ab5c78aa0b359eb18a88a197de8406c593458ffedde922'
@@ -71,7 +71,7 @@ build() {
     --with-lua-prefix="$srcdir/lua-${_luaver}" \
     --enable-perlinterp=dynamic \
     --enable-pythoninterp=dynamic \
-    --disable-python3interp \
+    --enable-python3interp=dynamic \
     --enable-rubyinterp=dynamic \
     --disable-tclinterp \
     --disable-gpm --disable-sysmouse \
