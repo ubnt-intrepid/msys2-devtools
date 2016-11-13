@@ -1,0 +1,19 @@
+pkgname=ranger
+pkgver=1.7.2
+pkgrel=1
+arch=('i686' 'x86_64')
+license=('GPLv3')
+url="http://ranger.nongnu.org/"
+source=("https://github.com/ranger/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('80917c93396e46272b6de63816d925eb708291a9f7a559d49b24c571ea0eeeb3')
+depends=("python")
+makedepends=("python3-setuptools")
+optdepends=('w3m: for previewing images in true color')
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  /usr/bin/python setup.py install --root="${pkgdir}" --optimize=1
+
+  mkdir -p "${pkgdir}/usr/share/licenses/ranger"
+  cp AUTHORS "${pkgdir}/usr/share/licenses/ranger/AUTHORS"
+}
