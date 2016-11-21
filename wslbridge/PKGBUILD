@@ -1,10 +1,10 @@
 pkgname=wslbridge
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/rprichard/wslbridge"
-source=("https://github.com/rprichard/wslbridge/archive/0.1.0.tar.gz"
+source=("https://github.com/rprichard/wslbridge/archive/${pkgver}.tar.gz"
         0010-fix-homedir.patch)
 sha256sums=('SKIP' SKIP)
 
@@ -15,7 +15,7 @@ bow_run() {
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
-  patch -p1 -i $srcdir/0010-fix-homedir.patch
+  # patch -p1 -i $srcdir/0010-fix-homedir.patch
 }
 
 build() {
